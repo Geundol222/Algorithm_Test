@@ -39,5 +39,33 @@ namespace ListTest
             Array.Copy(items, 0, newItems, 0, size);
             items = newItems;
         }
+
+        public bool Remove(T item)
+        {
+            int index = IndexOF(item);
+            if (index >= 0)
+            {
+                RemoveAt(index);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void RemoveAt(int index)
+        {
+            if (index < 0 || index >= items.Length)
+                throw new IndexOutOfRangeException();
+
+            size--;
+            Array.Copy(items, index + 1, items, index, size - index);
+        }
+
+        public int IndexOF(T index)
+        {
+            return Array.IndexOf(items, index, 0, size);
+        }
     }
 }
