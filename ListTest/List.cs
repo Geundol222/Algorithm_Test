@@ -162,7 +162,7 @@ namespace DataStructure
 
         public T[] ToArray()            // List를 Array로 바꿔줄 ToArray 함수 선언
         {
-            T[] copiedArr = new T[items.Length];        // 복사한 배열을 리턴할 새로운 배열 copiedArr 선언
+            T[] copiedArr = new T[size];        // 복사한 배열을 리턴할 새로운 배열 copiedArr 선언
 
             Array.Copy(items, 0, copiedArr, 0, size);   // items의 요소를 copiedArr에 복사
 

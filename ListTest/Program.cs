@@ -12,9 +12,7 @@ namespace ListTest
             list.Add(3);
             list.Add(4);
 
-            int[] intArr = new int[10];
-
-            list.CopyTo(intArr, 2);
+            int[] intArr = list.ToArray();
         }
     }
 }
