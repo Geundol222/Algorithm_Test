@@ -147,5 +147,16 @@ namespace DataStructure
 
             return -1;
         }
+
+        public void CopyTo(T[] array, int arrayIndex)       // 배열에 매개변수로 설정한 인덱스 부터 List에 있는 요소를 카피하는 CopyTo 함수 선언
+        {
+            if (array == null)
+                throw new ArgumentNullException();
+
+            if (arrayIndex < 0)
+                throw new ArgumentOutOfRangeException("index");
+
+            Array.Copy(items, 0, array, arrayIndex, size);
+        }
     }
 }
