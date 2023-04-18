@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,20 @@ namespace ListTest
         public int IndexOF(T item)     // 매개변수로 받은 item이 몇번째 인덱스에 있는지 확인하는 IndexOf 함수 선언
         {
             return Array.IndexOf(items, item, 0, size);     // Array의 IndexOf 함수를 이용하여 item의 값이 들어있는 인덱스 번호 리턴
+        }
+
+        public T? Find(Predicate<T> match)
+        {
+            if (match == null)
+                throw new ArgumentNullException("match");
+
+            for (int i = 0; i < size; i++)
+            {
+                if (match(items[i]))
+                    return items[i];
+            }
+
+            return default(T);
         }
     }
 }

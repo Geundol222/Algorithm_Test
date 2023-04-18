@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            List<int> list = new List<int>();
+
+            list.Find(x => x == 1);
         }
     }
 }
