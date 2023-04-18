@@ -21,8 +21,8 @@ namespace DataStructure
             this.size = 0;
         }
 
-        public int Count { get { return items.Length; } }       // Count 프로퍼티를 선언하여 items 배열의 길이를 반환
-        public int Capacity { get { return size; } }            // Capacity 프로퍼티를 선언하여 size값을 반환
+        public int Count { get { return size; } }       // Count 프로퍼티를 선언하여 size값을 반환
+        public int Capacity { get { return items.Length; } }            // Capacity 프로퍼티를 선언하여 items 배열의 길이를 반환
 
         public void Add(T item)     // Add 함수 구현
         {
@@ -167,6 +167,12 @@ namespace DataStructure
             Array.Copy(items, 0, copiedArr, 0, size);   // items의 요소를 copiedArr에 복사
 
             return copiedArr;       // copiedArr 반환
+        }
+
+        public void Insert(int index, T item)
+        {
+            if (index < 0 || index > Count)
+                throw new ArgumentOutOfRangeException("index");
         }
     }
 }
