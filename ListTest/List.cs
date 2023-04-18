@@ -133,5 +133,19 @@ namespace DataStructure
 
             return default(T);
         }
+
+        public int FindLastIndex(Predicate<T> match)      // 배열에서 입력한 요소의 마지막 값의 인덱스를 찾는 FindLastIndex 함수 선언 
+        {
+            if (match == null)
+                throw new ArgumentNullException("match");       // 만약 match 가 null 일경우 null 예외를 출력
+
+            for (int i = size; i >= 0; i--)         // 마지막 값을 찾아야 하므로 배열의 맨 뒤 부터 반복문을 돌린다.
+            {
+                if (match(items[i]))
+                    return i;
+            }
+
+            return -1;
+        }
     }
 }
