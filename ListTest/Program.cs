@@ -19,6 +19,8 @@ namespace ListTest
             list.Add(10);
 
             list.Insert(6, 105);
+
+            int[] arr = list.ToArray();
         }
     }
 }
