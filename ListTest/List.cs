@@ -72,18 +72,32 @@ namespace ListTest
             return Array.IndexOf(items, item, 0, size);     // Array의 IndexOf 함수를 이용하여 item의 값이 들어있는 인덱스 번호 리턴
         }
 
-        public T? Find(Predicate<T> match)
+        public T? Find(Predicate<T> match)      // 반환형을 T Nullable로 하는 Find 함수 선언, Predicate : 반환형을 bool로 하는 일반화된 델리게이트
         {
             if (match == null)
-                throw new ArgumentNullException("match");
+                throw new ArgumentNullException("match");       // 만약 match 가 null 일경우 null 예외를 출력
 
             for (int i = 0; i < size; i++)
             {
-                if (match(items[i]))
+                if (match(items[i]))        // 반복문을 돌면서 match에 들어온 함수에 따라(대부분 람다식) items[i]가 조건과 일치할 경우 items[i]를 반환
                     return items[i];
             }
 
-            return default(T);
+            return default(T);      // 일치하는 것이 없을 경우 들어온 함수 자료형의 기본값을 반환
+        }
+
+        public int FindIndex(int startIndex, int count, Predicate<T> match)     // int 반환형의 FindIndex 함수 선언
+        {
+            if (match == null)
+                throw new ArgumentNullException("match");       // 만약 match 가 null 일경우 null 예외를 출력
+
+            for (int i = startIndex; i < count; i++)
+            {
+                if (match(items[i]))        // 반복문을 돌면서 match에 들어온 함수에 따라(대부분 람다식) items[i]가 조건과 일치할 경우 i를 반환
+                    return i;
+            }
+
+            return -1;      // 일치하는 것이 없을 경우 -1을 반환
         }
     }
 }
