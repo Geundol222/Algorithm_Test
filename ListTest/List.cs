@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -157,6 +158,15 @@ namespace DataStructure
                 throw new ArgumentOutOfRangeException("index");
 
             Array.Copy(items, 0, array, arrayIndex, size);
+        }
+
+        public T[] ToArray()            // List를 Array로 바꿔줄 ToArray 함수 선언
+        {
+            T[] copiedArr = new T[items.Length];        // 복사한 배열을 리턴할 새로운 배열 copiedArr 선언
+
+            Array.Copy(items, 0, copiedArr, 0, size);   // items의 요소를 copiedArr에 복사
+
+            return copiedArr;       // copiedArr 반환
         }
     }
 }
