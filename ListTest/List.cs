@@ -99,5 +99,12 @@ namespace ListTest
 
             return -1;      // 일치하는 것이 없을 경우 -1을 반환
         }
+
+        public void Clear()         // List를 Clear 하는 Clear 함수 선언
+        {
+            int clearCap = items.Length;        // items의 길이를 clearCap에 저장
+            T[] clearItems = new T[clearCap];   // clearCap의 길이만큼 새로운 배열 clearItems 선언
+            items = clearItems;                 // items에 clearItems를 덮어 씌워 List에 있는 모든 값을 초기화
+        }
     }
 }
