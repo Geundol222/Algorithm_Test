@@ -169,10 +169,32 @@ namespace DataStructure
             return copiedArr;       // copiedArr 반환
         }
 
-        public void Insert(int index, T item)
+        public void Insert(int index, T item)       // 원하는 인덱스에 원하는 값을 넣어줄 수 있는 Insert 함수 선언
         {
-            if (index < 0 || index > Count)
+            if (index < 0 || index > items.Length)          // 예외 설정
                 throw new ArgumentOutOfRangeException("index");
+
+            if (size < items.Length)        // 만약 size가 items.Length 보다 작을 경우
+            {
+                size++;
+                Array.Copy(items, index, items, index + 1, size - 1);       // size를 1 키워준 후, Copy를 통해 원래 있던 인덱스들을 한칸 뒤로 민다
+                for (int i = 0; i < size; i++)
+                {
+                    if (i == index)
+                        items[i] = item;            // 반복을 통해 원하는 인덱스에 접근했을 경우 items[i]를 매개변수 item으로 바꿔준다.  Big-O : O(n)
+                }
+            }
+            else
+            {
+                Grow();                 // 만약 size가 items.Length와 같을 경우 Grow 함수를 이용해 List의 크기를 키워준 후 Insert를 진행한다.
+                size++;
+                Array.Copy(items, index, items, index + 1, size - 1);
+                for (int i = 0; i < size; i++)
+                {
+                    if (i == index)
+                        items[i] = item;
+                }
+            }
         }
     }
 }
