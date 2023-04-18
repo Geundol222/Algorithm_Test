@@ -19,8 +19,8 @@ namespace ListTest
             this.size = 0;
         }
 
-        public int Count { get { return items.Length; } }
-        public int Capacity { get { return size; } }
+        public int Count { get { return items.Length; } }       // Count 프로퍼티를 선언하여 items 배열의 길이를 반환
+        public int Capacity { get { return size; } }            // Capacity 프로퍼티를 선언하여 size값을 반환
 
         public void Add(T item)     // Add 함수 구현
         {
