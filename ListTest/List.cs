@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ListTest
+namespace DataStructure
 {
     public class List<T>        // List 클래스 선언
     {
@@ -105,6 +105,19 @@ namespace ListTest
             int clearCap = items.Length;        // items의 길이를 clearCap에 저장
             T[] clearItems = new T[clearCap];   // clearCap의 길이만큼 새로운 배열 clearItems 선언
             items = clearItems;                 // items에 clearItems를 덮어 씌워 List에 있는 모든 값을 초기화
+        }
+
+        public bool Contains(T item)        // bool 반환형의 Contains 함수 선언
+        {
+            int index = IndexOF(item);      // IndexOf 함수를 이용하여 item이 가지는 인덱스 번호를 저장한다.
+            if (index >= 0)
+            {
+                return true;                // 만약 index 번호가 존재하고 0보다 크거나 같다면 true 반환
+            }
+            else
+            {
+                return false;               // 위의 상황이 아니라면 false를 반환
+            }
         }
     }
 }
