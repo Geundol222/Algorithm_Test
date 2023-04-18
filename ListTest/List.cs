@@ -19,6 +19,9 @@ namespace ListTest
             this.size = 0;
         }
 
+        public int Count { get { return items.Length; } }
+        public int Capacity { get { return size; } }
+
         public void Add(T item)     // Add 함수 구현
         {
             if (size < items.Length)
