@@ -119,5 +119,19 @@ namespace DataStructure
                 return false;               // 위의 상황이 아니라면 false를 반환
             }
         }
+
+        public T? FindLast(Predicate<T> match)      // 배열에서 입력한 요소의 마지막 값을 찾는 FindLast 함수 선언 
+        {
+            if (match == null)
+                throw new ArgumentNullException("match");       // 만약 match 가 null 일경우 null 예외를 출력
+
+            for (int i = size; i >= 0; i--)         // 마지막 값을 찾아야 하므로 배열의 맨 뒤 부터 반복문을 돌린다.
+            {
+                if (match(items[i]))
+                    return items[i];
+            }
+
+            return default(T);
+        }
     }
 }
