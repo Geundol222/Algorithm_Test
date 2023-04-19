@@ -250,6 +250,18 @@ namespace DataStructure
         }
 
         /// <summary>
+        /// 맨 마지막 노드를 제거하는 함수
+        /// </summary>
+        /// <exception cref="InvalidOperationException"></exception>
+        public void RemoveLast()
+        {
+            if (this == null)
+                throw new InvalidOperationException();
+
+            Remove(tail);       // Remove함수를 이용하여 head를 제거한다.
+        }
+
+        /// <summary>
         /// 원하는 특정 노드를 찾기 위해 사용하는 함수
         /// </summary>
         /// <param name="value"></param>
