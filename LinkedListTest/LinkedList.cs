@@ -187,5 +187,36 @@ namespace DataStructure
 
             return newNode;
         }
+
+        /// <summary>
+        /// 특정 노드를 제거하는 함수
+        /// </summary>
+        /// <param name="node"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        public void Remove(LinkedListNode<T> node)
+        {
+            // 예외처리 => node가 null 일경우 null예외 처리, node가 이 LinkedList에 포함되지 않을 경우 Operation예외 처리
+            if (node == null) 
+                throw new ArgumentNullException();
+            if (node.list != this)
+                throw new InvalidOperationException();
+
+            // node가 head일 경우 node의 next를 head로 바꿔주고 tail일 경우 node의 prev를 tail로 바꿔준다.
+            if (node == head)
+                head = node.next;
+            if (node == tail)
+                tail = node.prev;
+
+            // node의 prev가 null이 아니면 node의 prev의 next를 node의 next로 바꿔주고 node의 next가 null이 아니면 node의 next의 prev를 node의 prev로 바꿔준다.
+            // 참조가 없어진 노드는 메모리에서 자동으로 해제된다.
+            if (node.prev != null)
+                node.prev.next = node.next;
+            if (node.next != null)
+                node.next.prev = node.prev;
+
+            // 노드의 개수를 줄여준다.
+            count--;
+        }
     }
 }
