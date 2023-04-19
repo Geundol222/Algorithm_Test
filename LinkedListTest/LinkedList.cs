@@ -58,6 +58,11 @@ namespace DataStructure
         public LinkedListNode<T> Last { get { return tail; } }
         public int Count { get { return count; } }
 
+        /// <summary>
+        /// LinkedList의 맨 앞에 노드 하나를 추가하고 추가한 노드를 head로 바꾸는 함수
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>newNode</returns>
         public LinkedListNode<T> AddFirst(T value)
         {
             // 새 노드 생성
