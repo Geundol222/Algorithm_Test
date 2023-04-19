@@ -24,6 +24,24 @@ namespace DataStructure
         public int Count { get { return size; } }       // Count 프로퍼티를 선언하여 size값을 반환
         public int Capacity { get { return items.Length; } }            // Capacity 프로퍼티를 선언하여 items 배열의 길이를 반환
 
+        public T this[int index]        // 지정한 인덱스의 내용을 가져오거나 설정하는 Indexer 선언
+        {
+            get
+            {
+                if (index < 0 || index >= size)         // 예외설정
+                    throw new ArgumentOutOfRangeException("index");
+
+                return items[index];            // items 배열에 index에 해당하는 값을 반환
+            }
+            set
+            {
+                if (index < 0 || index >= size)
+                    throw new ArgumentOutOfRangeException("index");
+
+                items[index] = value;       // items 배열 index에 해당하는 값에 value 값을 넣어 set 한다
+            }
+        }
+
         public void Add(T item)     // Add 함수 구현
         {
             if (size < items.Length)
