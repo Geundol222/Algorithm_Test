@@ -10,7 +10,7 @@ namespace DataStructure
 {
     public class List<T>        // List 클래스 선언
     {
-        private int DefaultCapacity = 10;
+        private const int DefaultCapacity = 10;
 
         private T[] items;
         private int size;
