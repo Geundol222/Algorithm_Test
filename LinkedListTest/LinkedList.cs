@@ -220,6 +220,24 @@ namespace DataStructure
         }
 
         /// <summary>
+        /// 특정 값을 가지고 있는 노드를 찾은 후 해당 노드를 삭제하는 함수
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>true</returns>
+        public bool Remove(T value)
+        {
+            LinkedListNode<T> node = Find(value);       // Find 함수를 이용하여 특정 값의 노드를 찾아 node에 저장
+
+            if (node != null)       // node가 null이 아니면 Remove함수를 동작시켜 해당 노드를 삭제 후 true 반환
+            {
+                Remove(value);
+                return true;
+            }
+            else                    // node가 null이면 false 반환
+                return false;
+        }
+
+        /// <summary>
         /// 원하는 특정 노드를 찾기 위해 사용하는 함수
         /// </summary>
         /// <param name="value"></param>
