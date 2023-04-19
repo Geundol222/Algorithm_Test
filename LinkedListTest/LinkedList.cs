@@ -218,5 +218,27 @@ namespace DataStructure
             // 노드의 개수를 줄여준다.
             count--;
         }
+
+        /// <summary>
+        /// 원하는 특정 노드를 찾기 위해 사용하는 함수
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>target</returns>
+        public LinkedListNode<T> Find(T value)
+        {
+            LinkedListNode<T> target = head; // head부터 반복하기 위해 target에 head 저장
+            EqualityComparer<T> compare = EqualityComparer<T>.Default;      // 값의 비교를 위해 EqualityComparer 클래스를 생성
+
+            while (target != null)
+            {
+                // target 이 null이 아닐때 까지 반복하면서 target.Value와 value가 같을경우 target을 리턴하고, 아닐경우 target.next를 target에 저장
+                if (compare.Equals(target.Value, value))
+                    return target;
+                else
+                    target = target.next;
+            }
+            // 반복이 끝나도 값을 찾을 수 없으면 null 반환
+            return null;            
+        }
     }
 }
