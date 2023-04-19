@@ -258,5 +258,20 @@ namespace DataStructure
             // 반복이 끝나도 값을 찾을 수 없으면 null 반환
             return null;            
         }
+
+        /// <summary>
+        /// 입력한 값을 가지고 있는 노드를 찾고 노드가 존재할 경우 true를 반환하는 함수
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>true</returns>
+        public bool Contains(T value)
+        {
+            LinkedListNode<T> target = Find(value);     // value의 값을 가지고 있는 노드를 Find함수로 찾은 후 target에 저장
+
+            if (target != null)         // target이 null이 아닌경우 true 반환
+                return true;
+            else                        // target이 null인 경우 false 반환
+                return false;
+        }
     }
 }
