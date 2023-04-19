@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructure
 {
+    // LinkedListNode 클래스 선언, 변수와 생성자, 프로퍼티 선언
     public class LinkedListNode<T>
     {
         internal LinkedList<T> list;
@@ -41,6 +42,7 @@ namespace DataStructure
 
     }
 
+    // LinkedList 클래스 선언, 변수와 생성자, 프로퍼티 선언
     public class LinkedList<T>
     {
         private LinkedListNode<T> head;
