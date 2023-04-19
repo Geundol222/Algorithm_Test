@@ -242,7 +242,7 @@ namespace DataStructure
         /// </summary>
         /// <param name="value"></param>
         /// <returns>target</returns>
-        public LinkedListNode<T> Find(T value)
+        public LinkedListNode<T>? Find(T value)
         {
             LinkedListNode<T> target = head; // head부터 반복하기 위해 target에 head 저장
             EqualityComparer<T> compare = EqualityComparer<T>.Default;      // 값의 비교를 위해 EqualityComparer 클래스를 생성
@@ -257,6 +257,28 @@ namespace DataStructure
             }
             // 반복이 끝나도 값을 찾을 수 없으면 null 반환
             return null;            
+        }
+
+        /// <summary>
+        /// 입력한 값을 가진 노드가 여러개 일경우 그 중 가장 뒤에 있는 노드를 찾기 위해 사용하는 함수
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>target</returns>
+        public LinkedListNode<T>? FindLast(T value)
+        {
+            LinkedListNode<T> target = tail; // tail부터 반복하기 위해 target에 tail 저장
+            EqualityComparer<T> compare = EqualityComparer<T>.Default;      // 값의 비교를 위해 EqualityComparer 클래스를 생성
+
+            while (target != null)
+            {
+                // target 이 null이 아닐때 까지 반복하면서 target.Value와 value가 같을경우 target을 리턴하고, 아닐경우 target.prev를 target에 저장
+                if (compare.Equals(target.Value, value))
+                    return target;
+                else
+                    target = target.prev;
+            }
+            // 반복이 끝나도 값을 찾을 수 없으면 null 반환
+            return null;
         }
 
         /// <summary>
