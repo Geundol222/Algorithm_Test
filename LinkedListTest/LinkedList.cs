@@ -113,5 +113,42 @@ namespace DataStructure
 
             return newNode;
         }
+
+        /// <summary>
+        /// LinkedList에서 원하는 노드 뒤에 새로운 노드를 넣어주는 함수
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="value"></param>
+        /// <returns>newNode</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        public LinkedListNode<T> AddAfter(LinkedListNode<T> node, T value)
+        {
+            // 새 노드 생성
+            LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
+
+            // 예외처리 => node가 null 일경우 null예외 처리, node가 이 LinkedList에 포함되지 않을 경우 Operation예외 처리
+            if (node == null)
+                throw new ArgumentNullException();
+            if (node.list != this)
+                throw new InvalidOperationException();
+
+            // 연결구조 바꾸기
+            if (node == head)
+            {
+                newNode = AddFirst(value);
+            }
+            else
+            {
+                newNode.next = node.next;
+                newNode.prev = node;
+                node.next.prev = newNode;
+                node.next = newNode;
+            }
+            // 노드개수 증가
+            count++;
+
+            return newNode;
+        }
     }
 }
