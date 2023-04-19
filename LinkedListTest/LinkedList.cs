@@ -57,5 +57,28 @@ namespace DataStructure
         public LinkedListNode<T> First { get { return head; } }
         public LinkedListNode<T> Last { get { return tail; } }
         public int Count { get { return count; } }
+
+        public LinkedListNode<T> AddFirst(T value)
+        {
+            // 새 노드 생성
+            LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
+
+            // 연결구조 바꾸기
+            if (head == null)       // 헤드가 null 일경우
+            {
+                head = newNode;
+                tail = newNode;
+            }
+            else                    // 헤드가 null이 아닐경우
+            {
+                newNode.next = head;
+                head.prev = newNode;
+                head = newNode;
+            }
+            // 노드의 개수 증가
+            count++;
+
+            return newNode;
+        }
     }
 }
