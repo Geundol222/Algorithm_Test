@@ -85,5 +85,33 @@ namespace DataStructure
 
             return newNode;
         }
+
+        /// <summary>
+        /// LinkedList의 맨 뒤에 노드 하나를 추가하고 추가한 노드를 tail로 바꾸는 함수
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>newNode</returns>
+        public LinkedListNode<T> AddLast(T value)
+        {
+            // 새 노드 생성
+            LinkedListNode<T> newNode = new LinkedListNode<T>(this, value);
+
+            // 연결구조 바꾸기
+            if (tail == null)       // tail이 null 일경우
+            {
+                head = newNode;
+                tail = newNode;
+            }
+            else                    // tail이 null이 아닐경우
+            {
+                newNode.prev = tail;
+                tail.next = newNode;
+                tail = newNode;
+            }
+            // 노드의 개수 증가
+            count++;
+
+            return newNode;
+        }
     }
 }
