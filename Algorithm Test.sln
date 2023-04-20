@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListTest", "ListTest\ListTest.csproj", "{DA8DDA60-C2F1-4596-8E9C-4BEEAFBFAF5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListTest", "LinkedListTest\LinkedListTest.csproj", "{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedListTest", "LinkedListTest\LinkedListTest.csproj", "{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IteratorTest", "IteratorTest\IteratorTest.csproj", "{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
