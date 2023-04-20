@@ -173,7 +173,7 @@ namespace DataStructure
                 throw new InvalidOperationException();
 
             // 연결구조 바꾸기
-            if (node == head)       // node가 tail 이면 AddLast 함수를 통해 tail에 노드 삽입
+            if (node == head)       // node가 head 이면 AddLast 함수를 통해 head에 노드 삽입
             {
                 newNode = AddFirst(value);
             }
