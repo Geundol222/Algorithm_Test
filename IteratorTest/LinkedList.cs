@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,7 @@ namespace Iterator
 
     }
 
-    public class LinkedList<T>
+    public class LinkedList<T> : IEnumerable<T>
     {
         private LinkedListNode<T> head;
         private LinkedListNode<T> tail;
@@ -227,5 +228,20 @@ namespace Iterator
             if (target != null) return true;
             else return false;
         }
+
+        
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+
+        
     }
 }
