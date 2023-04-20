@@ -260,7 +260,7 @@ namespace DataStructure
             if (this == null)
                 throw new InvalidOperationException();
 
-            Remove(tail);       // Remove함수를 이용하여 head를 제거한다.
+            Remove(tail);       // Remove함수를 이용하여 tail를 제거한다.
         }
 
         /// <summary>
