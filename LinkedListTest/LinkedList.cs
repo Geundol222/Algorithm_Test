@@ -232,7 +232,7 @@ namespace DataStructure
 
             if (node != null)       // node가 null이 아니면 Remove함수를 동작시켜 해당 노드를 삭제 후 true 반환
             {
-                Remove(value);
+                Remove(node);
                 return true;
             }
             else                    // node가 null이면 false 반환
