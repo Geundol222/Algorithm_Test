@@ -20,11 +20,17 @@
 
             Console.WriteLine();
 
-            Sort(list);
-            Sort(linkedList);
+            int[] listArr = Sort(list);
+            int[] linkedListArr = Sort(linkedList);
+            int[] array = { 2, 3, 4, 5, 8, 6, 7 };
 
-            int listAvg = Average(list);
-            int linkedListAvg = Average(linkedList);
+            int[] sortedArr = Sort(array);
+
+            double arrAvg = Average(array);
+            double listAvg = Average(list);
+            double linkedListAvg = Average(linkedList);
+
+            Console.WriteLine(arrAvg);
         }
 
         static T[] Sort<T>(IEnumerable<T> list) where T : IComparable
@@ -47,10 +53,10 @@
             return array;
         }
 
-        static int Average(IEnumerable<int> list)
+        static double Average(IEnumerable<int> list)
         {
             int sum = 0;
-            int avg = 0;
+            double avg = 0;
             int[] array = list.ToArray();
 
             for (int i = 0; i < array.Length; i++)
