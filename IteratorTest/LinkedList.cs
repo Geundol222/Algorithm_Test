@@ -229,19 +229,57 @@ namespace Iterator
             else return false;
         }
 
-        
-        
-        
-        
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new Enumerator(this);
+        }
 
-        
-        
-        
-        
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return new Enumerator(this);
+        }
 
-        
-        
+        public struct Enumerator : IEnumerator<T>
+        {
+            private LinkedList<T> linkedList;
+            private LinkedListNode<T> node;
+            private T current;
 
-        
+            public Enumerator(LinkedList<T> linkedList)
+            {
+                this.linkedList = linkedList;
+                this.node = linkedList.head;
+                this.current = default(T);
+            }
+
+            public T Current { get { return current; } }
+
+            object IEnumerator.Current { get { return Current; } }
+
+            public void Dispose()
+            {
+            }
+
+            public bool MoveNext()
+            {
+                if (node != null)
+                {
+                    current = node.Value;
+                    node = node.next;                    
+                    return true;
+                }
+                else
+                {
+                    current = default(T);
+                    return false;
+                }
+            }
+
+            public void Reset()
+            {
+                node = linkedList.head;
+                current = default(T);
+            }
+        }
     }
 }
