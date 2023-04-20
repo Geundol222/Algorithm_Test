@@ -27,7 +27,7 @@
             int linkedListAvg = Average(linkedList);
         }
 
-        static void Sort<T>(IEnumerable<T> list) where T : IComparable
+        static T[] Sort<T>(IEnumerable<T> list) where T : IComparable
         {
             T[] array = list.ToArray();
 
@@ -43,6 +43,8 @@
                     }
                 }
             }
+
+            return array;
         }
 
         static int Average(IEnumerable<int> list)
