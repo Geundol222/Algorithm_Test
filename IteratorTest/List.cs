@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Iterator
 {
-    public class List<T> : IEnumerable<T>
+    public class List<T> : IEnumerable<T>       // 열거자를 사용하기 위해 IEnumerable 인터페이스를 상속한다.
     {
         private const int DefaultCapacity = 10;
 
@@ -198,30 +198,30 @@ namespace Iterator
             }
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()       // Enumerator를 반환하는 함수 GetEnumerator를 구현한다.
         {
             return new Enumerator(this);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()     // Enumerator를 반환하는 함수 GetEnumerator를 구현한다.
         {
             return new Enumerator(this);
         }
 
-        public struct Enumerator : IEnumerator<T>
+        public struct Enumerator : IEnumerator<T>   // IEnumerator 인터페이스를 상속하는 Enumerator 구조체를 선언하고 열거자의 반복을 돌리기 위한 변수를 생성해준다.
         {
             private List<T> list;
             private int index;
             private T current;
 
-            public Enumerator(List<T> list)
+            public Enumerator(List<T> list)     // List를 매개변수로 하여 구조체 멤버변수를 초기화한다.
             {
                 this.list = list;
                 this.index = 0;
                 this.current = default(T);
             }
 
-            public T Current { get { return current; } }
+            public T Current { get { return current; } }        // 열거자의 현재 지점을 반환하는 프로퍼티를 선언한다.
 
             object IEnumerator.Current { get { return Current; } }
 
@@ -231,19 +231,19 @@ namespace Iterator
 
             public bool MoveNext()
             {
-                if (index < list.Count)
+                if (index < list.Count)         // 인덱스가 list의 크기보다 작을 경우 현재 열거자의 위치를 list의 인덱스 위치로 저장하고 인덱스를 1증가시킨 후 true를 리턴한다.
                 {
                     current = list[index++];
                     return true;
                 }
-                else
+                else                            // 인덱스가 list의 크기보다 클경우 현재 열거자의 위치를 자료형의 초기값으로 세팅하고 false를 리턴한다.
                 {
                     current = default(T);
                     return false;
                 }
             }
 
-            public void Reset()
+            public void Reset()     // 열거자를 초기위치로 이동시키는 Reset 함수
             {
                 current = default(T);
                 index = 0;

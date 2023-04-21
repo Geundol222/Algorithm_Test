@@ -42,7 +42,7 @@ namespace Iterator
 
     }
 
-    public class LinkedList<T> : IEnumerable<T>
+    public class LinkedList<T> : IEnumerable<T>       // 열거자를 사용하기 위해 IEnumerable 인터페이스를 상속한다.
     {
         private LinkedListNode<T> head;
         private LinkedListNode<T> tail;
@@ -229,23 +229,23 @@ namespace Iterator
             else return false;
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()       // Enumerator를 반환하는 함수 GetEnumerator를 구현한다.
         {
             return new Enumerator(this);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()       // Enumerator를 반환하는 함수 GetEnumerator를 구현한다.
         {
             return new Enumerator(this);
         }
 
-        public struct Enumerator : IEnumerator<T>
+        public struct Enumerator : IEnumerator<T>  // IEnumerator 인터페이스를 상속하는 Enumerator 구조체를 선언하고 열거자의 반복을 돌리기 위한 변수를 생성해준다.
         {
             private LinkedList<T> linkedList;
             private LinkedListNode<T> node;
             private T current;
 
-            public Enumerator(LinkedList<T> linkedList)
+            public Enumerator(LinkedList<T> linkedList)  // IEnumerator 인터페이스를 상속하는 Enumerator 구조체를 선언하고 열거자의 반복을 돌리기 위한 변수를 생성해준다.
             {
                 this.linkedList = linkedList;
                 this.node = linkedList.head;
@@ -262,20 +262,20 @@ namespace Iterator
 
             public bool MoveNext()
             {
-                if (node != null)
+                if (node != null)           // 만약 node가 null이 아니라면 열거자의 현재 값을 node의 Value값으로 하고 node를 다음 node로 세팅한다.
                 {
                     current = node.Value;
                     node = node.next;                    
                     return true;
                 }
-                else
+                else                        // 만약 node가 null이라면 열거자의 현재 값을 자료형의 기본값으로 세팅하고 false를 리턴한다.
                 {
                     current = default(T);
                     return false;
                 }
             }
 
-            public void Reset()
+            public void Reset()     // 열거자를 초기값으로 초기화시키는 Reset 함수
             {
                 node = linkedList.head;
                 current = default(T);
