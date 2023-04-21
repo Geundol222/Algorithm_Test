@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListTest", "ListTest\ListTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedListTest", "LinkedListTest\LinkedListTest.csproj", "{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IteratorTest", "IteratorTest\IteratorTest.csproj", "{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IteratorTest", "IteratorTest\IteratorTest.csproj", "{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stack & Queue Test", "Stack & Queue Test\Stack & Queue Test.csproj", "{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
