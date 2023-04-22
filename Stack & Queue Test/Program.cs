@@ -9,14 +9,30 @@ namespace Stack___Queue_Test
     {
         static void Main(string[] args)
         {
-            //string input = Console.ReadLine();
-            //BracketCheker(input);
+            Console.WriteLine("확인해볼 괄호를 입력하세요");
+            string input = Console.ReadLine();
+            BracketCheker(input);
+            Console.ReadLine();
 
-            //string calc = Console.ReadLine();
-            //double result = Calculator(calc);
-            //Console.WriteLine(result);
+            Console.WriteLine("계산식을 입력하십시오.");
+            string calc = Console.ReadLine();
+            double result = Calculator(calc);
+            Console.WriteLine($"계산 결과 : {result}");
+            Console.ReadLine();
 
-            FasterPlayer();
+            Console.WriteLine("플레이어의 수를 입력하세요");
+            Console.WriteLine("플레이어의 스피드는 랜덤으로 설정됩니다.");
+            int people = int.Parse(Console.ReadLine());
+            FasterPlayer(people);
+            Console.ReadLine();
+
+            Console.WriteLine("첫번 째 자연수 입력");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("두번 째 자연수 입력");
+            int k = int.Parse(Console.ReadLine());
+            int josephus = Josephus(n, k);
+            Console.WriteLine($"요세푸스 문제 정답은 {josephus}번 입니다.");
+            Console.ReadLine();
         }
 
         static void BracketCheker(string bracket)
@@ -83,6 +99,7 @@ namespace Stack___Queue_Test
 
         static double Calculator(string input)
         {
+            Console.Clear();
             Stack<string> stack = new Stack<string>();
             double op1 = 0;
             double op2 = 0;
@@ -178,12 +195,13 @@ namespace Stack___Queue_Test
             }
         }
 
-        static void FasterPlayer()
+        static void FasterPlayer(int people)
         {
+            Console.Clear();
             Queue<int> faster = new Queue<int>();
             List<int> list = new List<int>();
 
-            for (int i  = 0; i < 10; i++)
+            for (int i  = 0; i < people; i++)
             {
                 Player player = new Player();
                 list.Add(player.Speed);
@@ -200,6 +218,26 @@ namespace Stack___Queue_Test
                 faster.Dequeue();
                 Console.WriteLine($"스피드가 {i}인 플레이어가 행동");
             }
+        }
+
+        static int Josephus(int n, int k)
+        {
+            Console.Clear();
+            Queue<int> josep = new Queue<int>();
+
+            for (int i = 1; i <= n; i++)
+                josep.Enqueue(i);
+
+            for (int i = 1; i < n; i++)
+            {
+                for (int j = 1; j < k; j++)
+                {
+                    josep.Enqueue(josep.Dequeue());                    
+                }
+                josep.Dequeue();
+            }
+
+            return josep.Dequeue();
         }
     }
 }
