@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Stack___Queue_Test
@@ -7,70 +8,72 @@ namespace Stack___Queue_Test
     {
         static void Main(string[] args)
         {
-            //string input = Console.ReadLine();
-            //BracketCheker(input);
-
             string input = Console.ReadLine();
-            double result = Calculator(input);
-            Console.WriteLine(result);
+            BracketCheker(input);
+
+            //string input = Console.ReadLine();
+            //double result = Calculator(input);
+            //Console.WriteLine(result);
         }
 
         static void BracketCheker(string bracket)
         {
             Stack<char> stack = new Stack<char>();
 
-            char[] check = bracket.ToCharArray();
-
-            for (int i = 0; i < check.Length; i++) stack.Push(check[i]);
-
-            while (stack.Count > 0)
+            foreach (char item in bracket)
             {
-                char c = stack.Pop();
-
-                foreach (char item in stack)
+                if (item == '(' || item == '{' || item == '[')
                 {
-                    switch (c)
+                    stack.Push(item);
+                    continue;
+                }
+
+                if (stack.Count == 0)
+                    continue;
+                else
+                {
+                    char pick = stack.Peek();
+
+                    switch (pick)
                     {
-                        case ')':
-                            if (item == '(')
+                        case '(':
+                            foreach (char check in bracket)
                             {
-                                stack.Pop();
-                                break;
-                            }
-                            else
-                                continue;
-                        case '}':
-                            if (item == '{')
+                                if (check == ')' && stack.Count != 0)
+                                {
+                                    stack.Pop();
+                                    break;
+                                }
+                            }                            
+                            break;
+                        case '{':
+                            foreach (char check in bracket)
                             {
-                                stack.Pop();
-                                break;
+                                if (check == '}' && stack.Count != 0)
+                                {
+                                    stack.Pop();
+                                    break;
+                                }
                             }
-                            else
-                                continue;
-                        case ']':
-                            if (item == '[')
+                            break;
+                        case '[':
+                            foreach (char check in bracket)
                             {
-                                stack.Pop();
-                                break;
+                                if (check == ']' && stack.Count != 0)
+                                {
+                                    stack.Pop();
+                                    break;
+                                }
                             }
-                            else
-                                continue;
+                            break;
                         default:
-                            if (item == '(' || item == '{' || item == '[')
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                stack.Pop();
-                                break;
-                            }
+                            break;
                     }
-                    break;
                 }
             }
+
             if (stack.Count == 0)
-                Console.WriteLine("모든 괄호가 잘 맞습니다.");
+                Console.WriteLine("모든 괄호가 맞습니다.");
             else
                 Console.WriteLine("괄호가 맞지 않습니다.");
         }
@@ -129,25 +132,6 @@ namespace Stack___Queue_Test
                     opStack.Push(calc[i]);
                 else
                 {
-                    if (calc[i] == '(')
-                    {
-                        opStack.Push(calc[i]);
-                        continue;
-                    }
-                    else if (calc[i] == ')')
-                    {
-                        char c = ' ';
-                        while (true)
-                        {
-                            c = opStack.Pop();
-                            if (c == '(')
-                                break;
-                            else
-                                sb.Append(c);
-                        }
-                        continue;
-                    }
-
                     if (OperatorFirst(opStack.Peek()) < OperatorFirst(calc[i]))
                     {
                         opStack.Push(calc[i]);
@@ -170,8 +154,7 @@ namespace Stack___Queue_Test
             while (opStack.Count > 0)
             {
                 check = opStack.Pop();
-                if (check != '(')
-                    sb.Append(check);
+                sb.Append(check);
             }
 
             return sb.ToString();
@@ -187,8 +170,6 @@ namespace Stack___Queue_Test
                 case '+':
                 case '-':
                     return 2;
-                case '(':
-                    return 1;
                 default:
                     return -1;
             }
