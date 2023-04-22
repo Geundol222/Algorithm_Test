@@ -14,7 +14,7 @@ namespace Stack___Queue_Test
             BracketCheker(input);
             Console.ReadLine();
 
-            Console.WriteLine("계산식을 입력하십시오.");
+            Console.WriteLine("계산식을 입력하십시오.(한자리 수만 입력 가능)");
             string calc = Console.ReadLine();
             double result = Calculator(calc);
             Console.WriteLine($"계산 결과 : {result}");
@@ -28,7 +28,7 @@ namespace Stack___Queue_Test
 
             Console.WriteLine("첫번 째 자연수 입력");
             int n = int.Parse(Console.ReadLine());
-            Console.WriteLine("두번 째 자연수 입력");
+            Console.WriteLine("두번 째 자연수 입력(첫번 째 수보다 작아야 합니다.)");
             int k = int.Parse(Console.ReadLine());
             int josephus = Josephus(n, k);
             Console.WriteLine($"요세푸스 문제 정답은 {josephus}번 입니다.");
@@ -37,6 +37,7 @@ namespace Stack___Queue_Test
 
         static void BracketCheker(string bracket)
         {
+            Console.Clear();
             Stack<char> stack = new Stack<char>();
 
             foreach (char item in bracket)
