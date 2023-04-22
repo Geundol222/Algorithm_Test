@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -8,12 +9,14 @@ namespace Stack___Queue_Test
     {
         static void Main(string[] args)
         {
-            string input = Console.ReadLine();
-            BracketCheker(input);
-
             //string input = Console.ReadLine();
-            //double result = Calculator(input);
+            //BracketCheker(input);
+
+            //string calc = Console.ReadLine();
+            //double result = Calculator(calc);
             //Console.WriteLine(result);
+
+            FasterPlayer();
         }
 
         static void BracketCheker(string bracket)
@@ -172,6 +175,30 @@ namespace Stack___Queue_Test
                     return 2;
                 default:
                     return -1;
+            }
+        }
+
+        static void FasterPlayer()
+        {
+            Queue<int> faster = new Queue<int>();
+            List<int> list = new List<int>();
+
+            for (int i  = 0; i < 10; i++)
+            {
+                Player player = new Player();
+                list.Add(player.Speed);
+            }
+
+            list.Sort();
+            list.Reverse();
+
+            for (int i = 0; i < list.Count; i++)
+                faster.Enqueue(list[i]);
+
+            foreach (int i in list)
+            {
+                faster.Dequeue();
+                Console.WriteLine($"스피드가 {i}인 플레이어가 행동");
             }
         }
     }
