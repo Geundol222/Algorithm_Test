@@ -12,7 +12,11 @@ namespace PriorityQueue_Test
         // (ex. 숫자가 10000개 숫자 중 정렬 시켰을 때 중간에 있는 값 찾기 == 5000 번째 큰 수 찾기)
         static void Main(string[] args)
         {
-            Emergency();
+            //Emergency();
+
+            Console.Write("확인할 수의 갯수를 입력하세요 (숫자는 갯수만큼 랜덤으로 생성됩니다.) :");
+            int num = int.Parse(Console.ReadLine());
+            FindMiddleValue(num);
         }
 
         static void Emergency()
@@ -60,18 +64,45 @@ namespace PriorityQueue_Test
         {
             Random rand = new Random();
             PriorityQueue<int, int> maxHeap = new PriorityQueue<int, int>(Comparer<int>.Create((a, b) => b - a));
-            PriorityQueue<int, int> minHeap = new PriorityQueue<int, int>(Comparer<int>.Create((a, b) => a - b));
+            PriorityQueue<int, int> minHeap = new PriorityQueue<int, int>();
             List<int> list = new List<int>();
 
             int random = rand.Next(1, max + 1);
+            int middle = 0;
 
             for (int i = 0; i < max; i++)
-                list.Add(random);
+            {
+                list.Add(i + 1);
+                random = rand.Next(1, max + 1);
+            }
+
+            middle = list[0];
 
             for (int i = 1; i < list.Count; i++)
             {
+                if (list[i] < middle)
+                {
+                    maxHeap.Enqueue(list[i], list[i]);
 
+                    if (maxHeap.Count > minHeap.Count + 1)
+                    {
+                        minHeap.Enqueue(middle, middle);
+                        middle = maxHeap.Dequeue();
+                    }
+                }                    
+                else
+                {
+                    minHeap.Enqueue(list[i], list[i]);
+
+                    if (maxHeap.Count < minHeap.Count)
+                    {
+                        maxHeap.Enqueue(middle, middle);
+                        middle = minHeap.Dequeue();
+                    }
+                } 
             }
+
+            Console.WriteLine($"중앙값은 {middle}입니다.");
         }
     }
 }
