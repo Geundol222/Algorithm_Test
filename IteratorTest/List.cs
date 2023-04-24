@@ -221,7 +221,7 @@ namespace Iterator
                 this.current = default(T);
             }
 
-            public T Current { get { return current; } }        // 열거자의 현재 지점을 반환하는 프로퍼티를 선언한다.
+            public T Current { get { return current; } }        // 열거자의 현재 값을 반환하는 프로퍼티를 선언한다.
 
             object IEnumerator.Current { get { return Current; } }
 
@@ -231,19 +231,19 @@ namespace Iterator
 
             public bool MoveNext()
             {
-                if (index < list.Count)         // 인덱스가 list의 크기보다 작을 경우 현재 열거자의 위치를 list의 인덱스 위치로 저장하고 인덱스를 1증가시킨 후 true를 리턴한다.
+                if (index < list.Count)         // 인덱스가 list의 크기보다 작을 경우 현재 열거자의 값을 list의 인덱스 위치로 저장하고 인덱스를 1증가시킨 후 true를 리턴한다.
                 {
                     current = list[index++];
                     return true;
                 }
-                else                            // 인덱스가 list의 크기보다 클경우 현재 열거자의 위치를 자료형의 초기값으로 세팅하고 false를 리턴한다.
+                else                            // 인덱스가 list의 크기보다 클경우 현재 열거자의 값을 자료형의 초기값으로 세팅하고 false를 리턴한다.
                 {
                     current = default(T);
                     return false;
                 }
             }
 
-            public void Reset()     // 열거자를 초기위치로 이동시키는 Reset 함수
+            public void Reset()     // 열거자를 초기값으로 초기화시키는 Reset 함수
             {
                 current = default(T);
                 index = 0;
