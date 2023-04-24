@@ -55,5 +55,23 @@ namespace PriorityQueue_Test
                 num++;
             }
         }
+
+        static void FindMiddleValue(int max)
+        {
+            Random rand = new Random();
+            PriorityQueue<int, int> maxHeap = new PriorityQueue<int, int>(Comparer<int>.Create((a, b) => b - a));
+            PriorityQueue<int, int> minHeap = new PriorityQueue<int, int>(Comparer<int>.Create((a, b) => a - b));
+            List<int> list = new List<int>();
+
+            int random = rand.Next(1, max + 1);
+
+            for (int i = 0; i < max; i++)
+                list.Add(random);
+
+            for (int i = 1; i < list.Count; i++)
+            {
+
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PriorityQueue_Test
+namespace DataStructure
 {
     public class PriorityQueue<TElement, TPriority>
     {
@@ -18,6 +18,12 @@ namespace PriorityQueue_Test
         IComparer<TPriority> comparer;
 
         public PriorityQueue()
+        {
+            this.node = new List<Node>();
+            this.comparer = Comparer<TPriority>.Default;
+        }
+
+        public PriorityQueue(IComparer<TPriority> comparer)
         {
             this.node = new List<Node>();
             this.comparer = Comparer<TPriority>.Default;
