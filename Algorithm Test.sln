@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListTest", "ListTest\ListTest.csproj", "{DA8DDA60-C2F1-4596-8E9C-4BEEAFBFAF5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. ListTest", "ListTest\01. ListTest.csproj", "{DA8DDA60-C2F1-4596-8E9C-4BEEAFBFAF5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedListTest", "LinkedListTest\LinkedListTest.csproj", "{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 .LinkedListTest", "LinkedListTest\02 .LinkedListTest.csproj", "{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IteratorTest", "IteratorTest\IteratorTest.csproj", "{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. IteratorTest", "IteratorTest\03. IteratorTest.csproj", "{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stack & Queue Test", "Stack & Queue Test\Stack & Queue Test.csproj", "{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. Stack & Queue Test", "Stack & Queue Test\04. Stack & Queue Test.csproj", "{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. PriorityQueue Test", "PriorityQueue Test\05. PriorityQueue Test.csproj", "{DD04D78E-75D9-47F1-BA84-A5CA4069DE08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9FB7EF7-E720-438A-A2D8-C0207AFCEB51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD04D78E-75D9-47F1-BA84-A5CA4069DE08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD04D78E-75D9-47F1-BA84-A5CA4069DE08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD04D78E-75D9-47F1-BA84-A5CA4069DE08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD04D78E-75D9-47F1-BA84-A5CA4069DE08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
