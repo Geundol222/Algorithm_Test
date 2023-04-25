@@ -64,6 +64,33 @@ namespace BinarySearchTree_Test
             }
         }
 
+        /// <summary>
+        /// 지정한 값을 가지고 있는 노드가 있는지 찾는 FindNode함수
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public Node FindNode(T item)
+        {
+            if (root == null)       // 만약 root가 null이면 찾는 의미가 없으므로 null 반환
+                return null;
+
+            Node current = root;
+
+            while (current != null)
+            {
+                // current가 null이 될때까지 item의 값이 현재노드보다 크면 오른쪽 작으면 왼쪽 순회를 반복하면서
+                // item과 같은 값이 나오면 current의 값을 반환한다.
+                if (item.CompareTo(current.item) > 0)
+                    current = current.right;
+                else if (item.CompareTo(current.item) < 0)
+                    current = current.left;
+                else
+                    return current;
+            }
+
+            return null;    // 반복문이 끝났다는 것은 찾는 값이 없다는 의미이므로 null을 반환한다.
+        }
+
         public class Node
         {
             internal T item;
@@ -83,7 +110,7 @@ namespace BinarySearchTree_Test
             public bool IsLeftChildNode { get { return parent != null && parent.left == this; } }
             public bool IsRightChildNode { get { return parent != null && parent.right == this; } }
 
-            public bool HasBothChild { get { return  left != null && right != null; } }
+            public bool HasBothChild { get { return left != null && right != null; } }
             public bool HasLeftChild { get { return left != null && right == null; } }
             public bool HasRightChild { get { return left == null && right != null; } }
         }
