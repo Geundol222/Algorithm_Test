@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. ListTest", "ListTest\01. ListTest.csproj", "{DA8DDA60-C2F1-4596-8E9C-4BEEAFBFAF5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 .LinkedListTest", "LinkedListTest\02 .LinkedListTest.csproj", "{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. LinkedListTest", "LinkedListTest\02. LinkedListTest.csproj", "{C5B5F2C5-950D-4BAD-8F2E-65BB8A6670BF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. IteratorTest", "IteratorTest\03. IteratorTest.csproj", "{D0CBB99B-877F-488F-9D47-3C29EBCFAF5F}"
 EndProject
