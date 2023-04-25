@@ -65,11 +65,33 @@ namespace BinarySearchTree_Test
         }
 
         /// <summary>
+        /// FindNode를 통해 찾는 값이 존재하면 true 없으면 false를 반환하는 TryGetValue함수
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="outValue"></param>
+        /// <returns></returns>
+        public bool TryGetValue(T item, out T outValue)
+        {
+            Node findNode = FindNode(item); // FindNode함수를 통해 찾은 값의 정보를 저장한다.
+
+            if (findNode == null)   // 만약 findNode에서 찾은 값이 없으면 outValue를 기본값으로 저장하고 false를 반환한다.
+            {
+                outValue = default(T);
+                return false;
+            }
+            else                    // 만약 값을 찾았다면 outValue를 findNode의 값으로 저장하고 true를 반환한다.
+            {
+                outValue = findNode.item;
+                return true;
+            }
+        }
+
+        /// <summary>
         /// 지정한 값을 가지고 있는 노드가 있는지 찾는 FindNode함수
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public Node FindNode(T item)
+        private Node FindNode(T item)
         {
             if (root == null)       // 만약 root가 null이면 찾는 의미가 없으므로 null 반환
                 return null;
