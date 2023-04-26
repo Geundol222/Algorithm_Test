@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,28 +30,62 @@ namespace HashTable_Test
             table = new Entry[DefaultCapacity];
         }
 
-        public TKey this[Index]
+        /// <summary>
+        /// 인덱서 구현
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        /// <exception cref="KeyNotFoundException"></exception>
+        public TValue this[TKey key]
+        {
+            get
+            {
+                int index = GetHashedIndex(key);
+                if (CanBehavior(key, table[index].value, Behavior.Get))
+                    return table[index].value;
+                else
+                    throw new KeyNotFoundException();
+                
+            }
+            set
+            {
+                CanBehavior(key, value, Behavior.Set);
+            }
+        }
+
+        private bool TryGetValue(TKey key, out TValue value)
+        {
+            int index = FindIndex(key);
+
+            if (index > 0)
+            {
+                value = table[index].value;
+                return true;
+            }
+            else
+            {
+                value = default(TValue);
+                return false;
+            }
+        }
 
         /// <summary>
         /// 해싱된 인덱스를 받기위한 함수 GetHashedIndex
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public int GetHashedIndex(TKey key) { return Math.Abs(key.GetHashCode() % table.Length); }            
+        public int GetHashedIndex(TKey key) { return Math.Abs(key.GetHashCode() % table.Length); }
 
         /// <summary>
         /// 하려는 행동에 따라 다른 결과를 도출하기 위해 구현한 열거형과 CanBehavior 함수
         /// </summary>
-        public enum Behavior { None, Add, Set }         // 하려는 행동을 저장하는 열거형을 선언한다.
+        public enum Behavior { None, Add, Get, Set }         // 하려는 행동을 저장하는 열거형을 선언한다.
         public bool CanBehavior(TKey key, TValue value, Behavior behavior)
         {
             int index = GetHashedIndex(key);
 
-            while (true)
+            while (table[index].state == Entry.State.Using)
             {
-                else if (table[index].state == Entry.State.Deleted)
-                    continue;
-
                 // 만약 key의 값이 index에 있는 key 값과 같다면,
                 if (key.Equals(table[index].key))
                 {
@@ -57,6 +93,8 @@ namespace HashTable_Test
                     {
                         case Behavior.Add:      // c#에서는 중복된 키값을 허용하지 않으므로 예외를 출력한다.
                             throw new ArgumentException();
+                        case Behavior.Get:
+                            return true;
                         case Behavior.Set:      // 인덱서를 통해 받은 값을 set한다.
                             table[index].value = value;
                             return true;
@@ -83,6 +121,46 @@ namespace HashTable_Test
         public void Add(TKey key, TValue value)
         {
             CanBehavior(key, value, Behavior.Add);
+        }
+
+        public bool Remove(TKey key)
+        {
+            int index = FindIndex(key);
+
+            if (index > 0)
+            {
+                table[index].state = Entry.State.Deleted;
+                return true;
+            }
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 지정한 key값에 해당하는 인덱스를 찾는 FindIndex 함수
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        private int FindIndex(TKey key)
+        {
+            int index = GetHashedIndex(key);    // 해싱된 인덱스 값을 저장한다.
+
+            while (table[index].state == Entry.State.Using
+                || table[index].state == Entry.State.Deleted)      
+            {
+                if (table[index].state == Entry.State.Deleted)
+                {
+                    index = ++index % table.Length;
+                    continue;
+                }
+
+                if (key.Equals(table[index].key))
+                {
+                    return index;
+                }
+                index = ++index % table.Length;
+            }
+            return -1;
         }
     }
 }
