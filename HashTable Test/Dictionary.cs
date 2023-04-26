@@ -41,31 +41,15 @@ namespace HashTable_Test
             get
             {
                 int index = GetHashedIndex(key);
-                if (CanBehavior(key, table[index].value, Behavior.Get))
+                if (CanBehavior(key, table[index].value, Behavior.Get))     // 만약 CanBehavior가 true라면 index의 값을 반환한다.
                     return table[index].value;
                 else
-                    throw new KeyNotFoundException();
+                    throw new KeyNotFoundException();                       // 만약 false라면 KeyNotFoundException을 출력한다.
                 
             }
             set
             {
-                CanBehavior(key, value, Behavior.Set);
-            }
-        }
-
-        private bool TryGetValue(TKey key, out TValue value)
-        {
-            int index = FindIndex(key);
-
-            if (index > 0)
-            {
-                value = table[index].value;
-                return true;
-            }
-            else
-            {
-                value = default(TValue);
-                return false;
+                CanBehavior(key, value, Behavior.Set);                      // CanBehavior함수의 Set을 호출한다.
             }
         }
 

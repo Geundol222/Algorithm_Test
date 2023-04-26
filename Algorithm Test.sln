@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. PriorityQueue Test", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. BinarySearchTree Test", "BinarySearchTree Test\06. BinarySearchTree Test.csproj", "{5095F528-D4AE-4375-9F1B-725FAFE3FEC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashTable Test", "HashTable Test\HashTable Test.csproj", "{9DCAE2AC-4C2B-4127-BEA6-AD3EBF043BA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. HashTable Test", "HashTable Test\07. HashTable Test.csproj", "{9DCAE2AC-4C2B-4127-BEA6-AD3EBF043BA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
