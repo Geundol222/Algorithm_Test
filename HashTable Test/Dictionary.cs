@@ -28,6 +28,8 @@ namespace HashTable_Test
             table = new Entry[DefaultCapacity];
         }
 
+        public TKey this[Index]
+
         /// <summary>
         /// 해싱된 인덱스를 받기위한 함수 GetHashedIndex
         /// </summary>
@@ -38,31 +40,33 @@ namespace HashTable_Test
         /// <summary>
         /// 하려는 행동에 따라 다른 결과를 도출하기 위해 구현한 열거형과 CanBehavior 함수
         /// </summary>
-        public enum Behavior { None, Add, Set }
+        public enum Behavior { None, Add, Set }         // 하려는 행동을 저장하는 열거형을 선언한다.
         public bool CanBehavior(TKey key, TValue value, Behavior behavior)
         {
             int index = GetHashedIndex(key);
 
             while (true)
             {
-                if (table[index].state == Entry.State.None)
-                    break;
                 else if (table[index].state == Entry.State.Deleted)
                     continue;
 
+                // 만약 key의 값이 index에 있는 key 값과 같다면,
                 if (key.Equals(table[index].key))
                 {
                     switch (behavior)
                     {
-                        case Behavior.Add:
+                        case Behavior.Add:      // c#에서는 중복된 키값을 허용하지 않으므로 예외를 출력한다.
                             throw new ArgumentException();
-                        case Behavior.Set:
+                        case Behavior.Set:      // 인덱서를 통해 받은 값을 set한다.
                             table[index].value = value;
                             return true;
                         default:
                             return false;
                     }
                 }
+                if (table[index].state == Entry.State.None)
+                    break;
+
                 index = ++index % table.Length;
             }
             table[index].state = Entry.State.Using;
