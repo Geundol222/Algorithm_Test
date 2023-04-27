@@ -15,6 +15,8 @@
 
             dic.Remove(6);
 
+            dic.Add(6, 8);
+
             dic[3] = 5;
 
             Console.WriteLine(dic[3]);
