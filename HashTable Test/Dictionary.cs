@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HashTable_Test
+namespace DataStructure
 {
     public class Dictionary<TKey, TValue> where TKey : IEquatable<TKey>
     {
