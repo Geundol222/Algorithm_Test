@@ -15,6 +15,7 @@ namespace _08._DesignTechnique_Test
             if (n == 1)
             {
                 sb.Append($"{start + 1} {end + 1}\n");
+                return;
             }
 
             int remain = 3 - start - end;
