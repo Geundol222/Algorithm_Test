@@ -4,24 +4,66 @@ using System.Text;
 
 namespace _08._DesignTechnique_Test
 {
-    // 자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.
-
-    // 1부터 N까지 자연수 중에서 M개를 고른 수열
-    // 같은 수를 여러 번 골라도 된다.
     internal class Program
     {
-        static void Sequence(int n, int m)
+        static int whiteCount = 0;
+        static int blueCount = 0;
+        static int[,] paper;
+
+        static void ColorPaper(int x , int y, int n)
         {
-            StringBuilder sb = new StringBuilder();
+            if (ColorCheck(x, y, n))
+            {
+                if (paper[x, y] == 0)
+                    whiteCount++;
+                else
+                    blueCount++;
 
-            int[] arr = new int[m];
+                return;
+            }
 
+            int newSize = n / 2;
             
+            ColorPaper(x, y, newSize);
+            ColorPaper(x, y + newSize, newSize);
+            ColorPaper(x + newSize, y, newSize);
+            ColorPaper(x + newSize, y + newSize, newSize);
+        }
+
+        static bool ColorCheck(int x, int y, int n)
+        {
+            int color = paper[x, y];
+
+            for (int i = x; i < x + n; i++)
+            {
+                for (int j = y; j < y + n; j++)
+                {
+                    if (paper[i, j] != color)
+                        return false;
+                }
+            }
+
+            return true;
         }
 
         static void Main(string[] args)
         {
-            
+            int n = int.Parse(Console.ReadLine());
+
+            paper = new int[n, n];
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    paper[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            ColorPaper(0, 0, n);
+
+            Console.WriteLine(whiteCount);
+            Console.WriteLine(blueCount);
         }
     }
 }
