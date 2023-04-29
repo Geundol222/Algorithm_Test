@@ -8,7 +8,7 @@
 
             Sorting_Test.Sort sort = new Sorting_Test.Sort();
 
-            sort.BubbleSort(arr);
+            sort.QuickSort(arr, 0, arr.Length - 1);
 
             for (int i = 0; i < arr.Length; i++)
             {

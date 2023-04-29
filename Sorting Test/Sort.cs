@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,12 @@ namespace Sorting_Test
         {
             for (int i = 0; i < list.Count; i++)
             {
-                int index = i;
+                int changeIndex = i;
                 for (int j = i; j < list.Count; j++)
                 {
-                    if (list[index] > list[j])
-                        index = j;
+                    if (list[j] < list[changeIndex])
+                        Swap(list, j, changeIndex);
                 }
-                Swap(list, i, index);
             }
         }
 
@@ -28,7 +28,7 @@ namespace Sorting_Test
             {
                 int target = list[i];
                 int j;
-                for (j = i - 1; j >= 0 && target < list[j]; j--)
+                for (j = i - 1; j >=0 && target < list[j]; j--)
                 {
                     list[j + 1] = list[j];
                 }
@@ -40,10 +40,10 @@ namespace Sorting_Test
         {
             for (int i = 0; i < list.Count; i++)
             {
-                for (int j = 1; j < list.Count; j++)
+                for (int j = i; j < list.Count; j++)
                 {
-                    if (list[j -1] > list[j])
-                        Swap(list, j - 1, j);
+                    if (list[i] > list[j])
+                        Swap(list, i, j);
                 }
             }
         }
@@ -61,10 +61,13 @@ namespace Sorting_Test
             {
                 list[i] = pq.Dequeue();
             }
+            
         }
 
         public void QuickSort(IList<int> list, int start, int end)
         {
+            if (start >= end) return;
+
             int pivot = start;
             int i = pivot + 1;
             int j = end;
@@ -81,7 +84,6 @@ namespace Sorting_Test
                 else
                     Swap(list, pivot, j);
             }
-
             QuickSort(list, start, j - 1);
             QuickSort(list, j + 1, end);
         }

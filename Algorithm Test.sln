@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. HashTable Test", "HashT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. DesignTechnique Test", "08. DesignTechnique Test\08. DesignTechnique Test.csproj", "{4878A623-149B-4169-871F-51B3BF51CB1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting Test", "Sorting Test\Sorting Test.csproj", "{C6B6CEB5-0545-4ED3-AE62-273E4F7222D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09. Sorting Test", "Sorting Test\09. Sorting Test.csproj", "{C6B6CEB5-0545-4ED3-AE62-273E4F7222D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
