@@ -12,6 +12,7 @@ namespace Project_TextRPG
         private bool isRunning = true;
         private Scene currentScene;
         private MainMenuScene mainMenuScene;
+        private CreatePlayerScene createPlayerScene;
 
         public void Run()
         {
@@ -30,8 +31,14 @@ namespace Project_TextRPG
         public void Init()
         {
             mainMenuScene = new MainMenuScene(this);
+            createPlayerScene = new CreatePlayerScene(this);
 
             currentScene = mainMenuScene;
+        }
+
+        public void GameStart()
+        {
+            currentScene = createPlayerScene;
         }
 
         public void Render()

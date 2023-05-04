@@ -50,6 +50,7 @@ namespace Project_TextRPG
             switch (command)
             {
                 case 1:
+                    game.GameStart();
                     break;
                 case 2:
                     break;
