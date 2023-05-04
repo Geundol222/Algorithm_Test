@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public static class Data
+    public struct Point
     {
-        public static Player player;
+        public int x;
+        public int y;
 
-        public static void Init()
+        public Point(int x, int y)
         {
-            player = new Player();
+            this.x = x;
+            this.y = y;
         }
     }
 }

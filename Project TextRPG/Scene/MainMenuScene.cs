@@ -8,9 +8,7 @@ namespace Project_TextRPG
 {
     public class MainMenuScene : Scene
     {
-        public MainMenuScene(Game game) : base(game)
-        {
-        }
+        public MainMenuScene(Game game) : base(game) { }
 
         public override void Render()
         {

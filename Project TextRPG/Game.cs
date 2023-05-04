@@ -10,9 +10,10 @@ namespace Project_TextRPG
     public class Game
     {
         private bool isRunning = true;
-        private Scene currentScene;
-        private MainMenuScene mainMenuScene;
-        private CreatePlayerScene createPlayerScene;
+
+        private Scene                   currentScene;
+        private MainMenuScene           mainMenuScene;
+        private CreatePlayerScene       createPlayerScene;
 
         public void Run()
         {
@@ -30,6 +31,8 @@ namespace Project_TextRPG
 
         public void Init()
         {
+            Data.Init();
+
             mainMenuScene = new MainMenuScene(this);
             createPlayerScene = new CreatePlayerScene(this);
 

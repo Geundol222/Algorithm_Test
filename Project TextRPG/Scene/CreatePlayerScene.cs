@@ -9,12 +9,9 @@ namespace Project_TextRPG
     public class CreatePlayerScene : Scene
     {
         Random rand = new Random();
-        public Player player = new Player();
         Queue<string> strQueue = new Queue<string>();
 
-        public CreatePlayerScene(Game game) : base(game) 
-        { 
-        }
+        public CreatePlayerScene(Game game) : base(game) { }
 
         public override void Render()
         {
@@ -46,7 +43,7 @@ namespace Project_TextRPG
         public void CreateComplete()
         {
             StringBuilder sb = new StringBuilder();
-            int count = 4;
+            int count = 3;
 
             Console.Clear();
             Console.WriteLine("캐릭터를 생성중입니다.");
@@ -60,14 +57,14 @@ namespace Project_TextRPG
             Console.WriteLine("캐릭터 생성이 완료되었습니다!");
             Thread.Sleep(1000);
             Console.Clear();
-            sb.AppendLine($"당신{player.name}의 스탯은 다음과 같습니다.");
-            sb.AppendLine($"레벨        : {player.level}");
-            sb.AppendLine($"체력        : {player.hp}");
-            sb.AppendLine($"마력        : {player.mp}");
-            sb.AppendLine($"공격력      : {player.ap}");
-            sb.AppendLine($"방어력      : {player.dp}");
-            sb.AppendLine($"보유 골드   : {player.gold}");
-            sb.AppendLine($"경험치      : {player.exp}");
+            sb.AppendLine($"당신({Data.player.name})의 스탯은 다음과 같습니다.");
+            sb.AppendLine($"레벨        : {Data.player.level}");
+            sb.AppendLine($"체력        : {Data.player.hp}");
+            sb.AppendLine($"마력        : {Data.player.mp}");
+            sb.AppendLine($"공격력      : {Data.player.ap}");
+            sb.AppendLine($"방어력      : {Data.player.dp}");
+            sb.AppendLine($"보유 골드   : {Data.player.gold}");
+            sb.AppendLine($"경험치      : {Data.player.exp}");
             sb.AppendLine();
             sb.AppendLine("능력치와 이름을 확정하시겠습니까?");
             sb.AppendLine("1. 예");
@@ -87,14 +84,14 @@ namespace Project_TextRPG
         {
             string name = Console.ReadLine();
 
-            player.name = name;
-            player.exp = 0;
-            player.hp = rand.Next(50, 100);
-            player.mp = rand.Next(20, 50);
-            player.ap = rand.Next(5, 10);
-            player.dp = rand.Next(1, 5);
-            player.gold = 0;
-            player.level = 1;
+            Data.player.name = name;
+            Data.player.exp = 0;
+            Data.player.hp = rand.Next(50, 100);
+            Data.player.mp = rand.Next(20, 50);
+            Data.player.ap = rand.Next(5, 10);
+            Data.player.dp = rand.Next(1, 5);
+            Data.player.gold = 0;
+            Data.player.level = 1;
 
             CreateComplete();
 
