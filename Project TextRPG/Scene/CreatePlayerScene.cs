@@ -59,8 +59,8 @@ namespace Project_TextRPG
             Console.Clear();
             sb.AppendLine($"당신({Data.player.name})의 스탯은 다음과 같습니다.");
             sb.AppendLine($"레벨        : {Data.player.level}");
-            sb.AppendLine($"체력        : {Data.player.hp}");
-            sb.AppendLine($"마력        : {Data.player.mp}");
+            sb.AppendLine($"체력        : {Data.player.curHp} / {Data.player.maxHp}");
+            sb.AppendLine($"마력        : {Data.player.curMp} / {Data.player.maxMp}");
             sb.AppendLine($"공격력      : {Data.player.ap}");
             sb.AppendLine($"방어력      : {Data.player.dp}");
             sb.AppendLine($"보유 골드   : {Data.player.gold}");
@@ -86,8 +86,10 @@ namespace Project_TextRPG
 
             Data.player.name = name;
             Data.player.exp = 0;
-            Data.player.hp = rand.Next(50, 100);
-            Data.player.mp = rand.Next(20, 50);
+            Data.player.maxHp = rand.Next(50, 100);
+            Data.player.maxMp = rand.Next(20, 50);
+            Data.player.curHp = Data.player.maxHp;
+            Data.player.curMp = Data.player.maxMp;
             Data.player.ap = rand.Next(5, 10);
             Data.player.dp = rand.Next(1, 5);
             Data.player.gold = 0;
