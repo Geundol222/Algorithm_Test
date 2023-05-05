@@ -107,10 +107,14 @@ namespace Project_TextRPG
 
             switch (command)
             {
-                case 1:                    
+                case 1:
+                    game.currentScene = game.sceneDic["스토리"];
                     break;
                 case 2:
-                    return;
+                    game.currentScene = game.sceneDic["메인메뉴"];
+                    Console.WriteLine("메인메뉴로 돌아갑니다.");
+                    Thread.Sleep(1000);
+                    break;
             }
         }
     }

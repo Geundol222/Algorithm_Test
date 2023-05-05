@@ -14,5 +14,10 @@ namespace Project_TextRPG
         {
             player = new Player();
         }
+
+        public static void Release()
+        {
+
+        }
     }
 }

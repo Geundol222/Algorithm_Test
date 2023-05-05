@@ -48,9 +48,12 @@ namespace Project_TextRPG
             switch (command)
             {
                 case 1:
-                    game.GameStart();
+                    game.currentScene = game.sceneDic["캐릭터 생성"];
                     break;
                 case 2:
+                    game.EndGame();
+                    Console.WriteLine("게임을 종료합니다.");
+                    Thread.Sleep(1000);
                     break;
             }
         }
