@@ -14,6 +14,18 @@ namespace Project_TextRPG
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.AppendLine(@"                                                          |>>>");
+            sb.AppendLine(@"                   _                      _                |");
+            sb.AppendLine(@"    ____________ .' '.    _____/----/-\ .' './========\   / \");
+            sb.AppendLine(@"   //// ////// /V_.-._\  |.-.-.|===| _ |-----| u    u |  /___\");
+            sb.AppendLine(@"  // /// // ///==\ u |.  || | ||===||||| |T| |   ||   | .| u |_ _ _ _ _ _");
+            sb.AppendLine(@" ///////-\////====\==|:::::::::::::::::::::::::::::::::::|u u| U U U U U");
+            sb.AppendLine(@" |----/\u |--|++++|..|'''''''''''::::::::::::::''''''''''|+++|+-+-+-+-+-+");
+            sb.AppendLine(@" |u u|u | |u ||||||..|              '::::::::'           |===|>=== _ _ ==");
+            sb.AppendLine(@" |===|  |u|==|++++|==|              .::::::::.           | T |....| V |..");
+            sb.AppendLine(@" |u u|u | |u ||HH||         \|/    .::::::::::.");
+            sb.AppendLine(@" |===|_.|u|_.|+HH+|_              .::::::::::::.              _");
+            sb.AppendLine();
             sb.AppendLine("당신은 마을에 있습니다. 행동을 선택해 주세요");
             sb.AppendLine();
             sb.AppendLine("============================================");

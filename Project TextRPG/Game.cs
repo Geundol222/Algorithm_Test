@@ -41,7 +41,7 @@ namespace Project_TextRPG
             sceneDic.Add("인벤토리", new InventoryScene(this));
             sceneDic.Add("여관", new TavernScene(this));
 
-            currentScene = sceneDic["여관"];
+            currentScene = sceneDic["마을"];
         }
 
         public void EndGame()
