@@ -17,7 +17,7 @@ namespace Project_TextRPG
             description = $"평범한 포션, 플레이어의 체력을 {point}회복시킨다.";
         }
 
-        public override void Use()
+        public override bool Use()
         {
             Console.Clear();
 
@@ -25,7 +25,7 @@ namespace Project_TextRPG
             {
                 Console.WriteLine("이미 체력이 전부 차있습니다.");
                 Thread.Sleep(1000);
-                return;
+                return false;
             }
             else
             {
@@ -40,6 +40,7 @@ namespace Project_TextRPG
 
                 Console.WriteLine($"현재 체력 : {Data.player.curHp} / {Data.player.maxHp}");
                 Thread.Sleep(1000);
+                return true;
             }
         }
     }

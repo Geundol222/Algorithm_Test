@@ -28,8 +28,6 @@ namespace Project_TextRPG
             }
 
             inven.Add(new Potion());
-            inven.Add(new LargePotion());
-            inven.Add(new Potion());
         }
 
         public static void InventoryMap()

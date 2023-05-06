@@ -55,6 +55,7 @@ namespace Project_TextRPG
                 case 3:
                     break;
                 case 4:
+                    game.currentScene = game.sceneDic["여관"];
                     break;
                 case 5:
                     LoadInventory();
@@ -77,7 +78,6 @@ namespace Project_TextRPG
             sb.AppendLine($"MP   : {Data.player.curMp} / {Data.player.maxMp}");
             sb.AppendLine($"AP   : {Data.player.ap}");
             sb.AppendLine($"DP   : {Data.player.dp}");
-            sb.AppendLine($"GOLD : {Data.player.gold}");
             sb.AppendLine($"EXP  : {Data.player.exp}");
             sb.AppendLine("==============================");
 

@@ -92,7 +92,7 @@ namespace Project_TextRPG
             Data.player.curMp = Data.player.maxMp;
             Data.player.ap = rand.Next(5, 10);
             Data.player.dp = rand.Next(1, 5);
-            Data.player.gold = 0;
+            Data.player.gold = 100;
             Data.player.level = 1;
 
             CreateComplete();

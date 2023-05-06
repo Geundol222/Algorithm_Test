@@ -24,12 +24,16 @@ namespace Project_TextRPG
 
         public void UseItem(Item item)
         {
-            Data.itemCount[Data.inventory.itemIndex]--;
-
-            item.Use();
-
-            if (Data.itemCount[Data.inventory.itemIndex] < 0)
-                Data.inven.Remove(item);
+            if (item.Use())
+            {
+                Data.itemCount[Data.inventory.itemIndex]--;
+                if (Data.itemCount[Data.inventory.itemIndex] < 1)
+                    Data.inven.Remove(item);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

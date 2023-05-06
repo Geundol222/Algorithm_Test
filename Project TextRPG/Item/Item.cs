@@ -11,6 +11,6 @@ namespace Project_TextRPG
         public string name { get; set; }
         public string description { get; set; }
 
-        public virtual void Use() { }
+        public virtual bool Use() { return true; }
     }
 }

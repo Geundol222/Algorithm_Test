@@ -25,7 +25,7 @@ namespace Project_TextRPG
             for (int i = 0;  i < charArr.Length; i++)
             {
                 Console.Write(charArr[i]);
-                Thread.Sleep(50);
+                Thread.Sleep(30);
             }
         }
 

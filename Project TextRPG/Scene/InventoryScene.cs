@@ -45,10 +45,7 @@ namespace Project_TextRPG
 
         public void PrintInventory()
         {
-            Data.AddItem();
-
             StringBuilder sb = new StringBuilder();
-            Item item = Data.inven[Data.inventory.itemIndex];
 
             for (int y = 0; y < Data.inventoryMap.GetLength(0); y++)
             {
@@ -60,15 +57,19 @@ namespace Project_TextRPG
             }
             Console.Write(sb.ToString());
 
+            Console.WriteLine($"보유 골드 : {Data.player.gold}");
+            Console.WriteLine();
+
+            if (Data.inven.Count > 0)
+            {
+                Console.WriteLine($"{Data.inven[Data.inventory.itemIndex].name} X {Data.itemCount[Data.inventory.itemIndex]}");
+                Console.WriteLine($"설명 : {Data.inven[Data.inventory.itemIndex].description}");
+            }
+
+            Console.WriteLine();
             Console.WriteLine(" 방향키 : 아이템 탐색");
             Console.WriteLine(" Q      : 나가기");
             Console.WriteLine(" Z      : 아이템 사용");
-
-            if (Data.inven[Data.inventory.itemIndex] != null)
-            {
-                Console.WriteLine($"{item.name} X {Data.itemCount[Data.inventory.itemIndex]}");
-                Console.WriteLine($"설명 : {item.description}");
-            }
 
             Console.SetCursorPosition(Data.inventory.point.x * 2, Data.inventory.point.y);
             Console.Write(Data.inventory.icon);
