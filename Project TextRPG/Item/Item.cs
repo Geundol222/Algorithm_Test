@@ -8,9 +8,16 @@ namespace Project_TextRPG
 {
     public class Item
     {
-        public string name { get; set; }
-        public string description { get; set; }
+        public string image;
+        public int price { get; protected set; }
+        public string name { get; protected set; }
+        public string description { get; protected set; }
 
         public virtual bool Use() { return true; }
+
+        public void Sell() 
+        {
+
+        }
     }
 }

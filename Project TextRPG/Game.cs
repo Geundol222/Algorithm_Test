@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Project_TextRPG
 {
@@ -13,6 +14,7 @@ namespace Project_TextRPG
 
         public Scene                   currentScene { get;  set; }
         public Dictionary<string, Scene> sceneDic { get; set; }
+        BattleScene battleScene;
 
         public void Run()
         {
@@ -41,8 +43,9 @@ namespace Project_TextRPG
             sceneDic.Add("인벤토리", new InventoryScene(this));
             sceneDic.Add("여관", new TavernScene(this));
             sceneDic.Add("마을 밖", new MapScene(this));
+            battleScene = new BattleScene(this);
 
-            currentScene = sceneDic["마을"];
+            currentScene = sceneDic["메인메뉴"];
         }
 
         public void EndGame()
@@ -59,14 +62,15 @@ namespace Project_TextRPG
             currentScene.Render();
         }
 
+        public void Battle(Monster monster)
+        {
+            currentScene = battleScene;
+            battleScene.StartBattle(monster);
+        }
+
         public void Update()
         {
             currentScene.Update();
-        }
-
-        public void Battle(Monster monster)
-        {
-
         }
 
         public void Release()

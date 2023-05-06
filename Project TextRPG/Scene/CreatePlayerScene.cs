@@ -86,16 +86,6 @@ namespace Project_TextRPG
             string name = Console.ReadLine();
 
             Data.player.name = name;
-            Data.player.exp = 0;
-            Data.player.maxHp = rand.Next(50, 100);
-            Data.player.maxMp = rand.Next(20, 50);
-            Data.player.curHp = Data.player.maxHp;
-            Data.player.curMp = Data.player.maxMp;
-            Data.player.speed = rand.Next(1, 11);
-            Data.player.ap = rand.Next(5, 10);
-            Data.player.dp = rand.Next(1, 5);
-            Data.player.gold = 100;
-            Data.player.level = 1;
 
             CreateComplete();
 
@@ -115,8 +105,7 @@ namespace Project_TextRPG
                     game.currentScene = game.sceneDic["스토리"];
                     break;
                 case 2:
-                    game.currentScene = game.sceneDic["메인메뉴"];
-                    Console.WriteLine("메인메뉴로 돌아갑니다.");
+                    game.currentScene = this;
                     Thread.Sleep(1000);
                     break;
             }

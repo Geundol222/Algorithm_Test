@@ -16,29 +16,28 @@ namespace Project_TextRPG
             name = "슬라임";
             curHp = 25;
             maxHp = 25;
-            ap = 3;
+            ap = 5;
             dp = 1;
+            speed = 3;
+            gold = 20;
+            exp = 20;
 
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("               ██████████                ");
-            sb.AppendLine("       ████████░░░░░░░░░░████████        ");
-            sb.AppendLine("      ██░░░░░░░░░░░░░░░░░░░░░░░░░░██      ");
-            sb.AppendLine("    ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██   ");
-            sb.AppendLine("  ██░░░░░░░░░░░░░░░░░░            ░░██    ");
-            sb.AppendLine("  ██░░░░░░░░░░░░░░                  ░░██  ");
-            sb.AppendLine("██░░░░░░░░░░                        ░░░░██");
-            sb.AppendLine("██░░░░░░░░░░                        ░░░░██");
-            sb.AppendLine("██░░░░░░░░░░        ██        ██      ░░██");
-            sb.AppendLine("██░░░░░░░░          ██        ██      ░░██");
-            sb.AppendLine("██░░░░░░░░          ██        ██      ░░██");
-            sb.AppendLine("██░░░░░░░░                            ░░██");
-            sb.AppendLine("██░░░░░░░░░░                          ░░██");
-            sb.AppendLine("██░░░░░░░░░░░░                        ░░██");
-            sb.AppendLine("██░░░░░░░░░░░░░░                      ░░██");
-            sb.AppendLine("██░░░░░░░░░░░░░░░░░░                ░░░░██");
-            sb.AppendLine("████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░████");
-            sb.AppendLine("    ██████████████████████████████████    ");
+            sb.AppendLine("             ░░░░░░░░░░              ");
+            sb.AppendLine("        ░░░░        ░░░░░░           ");
+            sb.AppendLine("      ░░                  ░░         ");
+            sb.AppendLine("    ░░                    ░░░░       ");
+            sb.AppendLine("  ░░                      ░░░░░░     ");
+            sb.AppendLine("  ░░                        ░░░░     ");
+            sb.AppendLine("░░                ░░    ░░  ░░░░░░   ");
+            sb.AppendLine("░░                ██░░  ██    ░░░░   ");
+            sb.AppendLine("░░                ██░░  ██    ░░░░   ");
+            sb.AppendLine("░░            ░░            ░░░░░░   ");
+            sb.AppendLine("░░░░░░                      ░░░░░░   ");
+            sb.AppendLine("  ░░░░░░                  ░░░░░░     ");
+            sb.AppendLine("  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░     ");
+            sb.AppendLine("      ░░░░░░░░░░░░░░░░░░░░░░         ");
             image = sb.ToString();
         }
 

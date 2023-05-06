@@ -62,8 +62,12 @@ namespace Project_TextRPG
 
             if (Data.inven.Count > 0)
             {
-                Console.WriteLine($"{Data.inven[Data.inventory.itemIndex].name} X {Data.itemCount[Data.inventory.itemIndex]}");
-                Console.WriteLine($"설명 : {Data.inven[Data.inventory.itemIndex].description}");
+                Item item = Data.inven[Data.inventory.itemIndex];
+                int count = Data.itemCount[Data.inventory.itemIndex];
+                Console.WriteLine($"{item.name} X {count}");
+                Console.WriteLine(item.image);
+                Console.WriteLine($"{item.description}");
+                Console.WriteLine($"아이템 가치 : {item.price}");
             }
 
             Console.WriteLine();
@@ -71,7 +75,7 @@ namespace Project_TextRPG
             Console.WriteLine(" Q      : 나가기");
             Console.WriteLine(" Z      : 아이템 사용");
 
-            Console.SetCursorPosition(Data.inventory.point.x * 2, Data.inventory.point.y);
+            Console.SetCursorPosition(Data.inventory.point.x, Data.inventory.point.y);
             Console.Write(Data.inventory.icon);
         }
     }

@@ -14,6 +14,24 @@ namespace Project_TextRPG
         {
             name = "큰포션";
             description = $"커다란 포션, 플레이어의 체력을 {point}회복시킨다.";
+            price = 10;
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("      ██████      ");
+            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒    ");
+            sb.AppendLine("    ▒▒██████▒▒    ");
+            sb.AppendLine("      ▒▒  ▒▒      ");
+            sb.AppendLine("      ▒▒  ▒▒      ");
+            sb.AppendLine("    ▒▒      ▒▒    ");
+            sb.AppendLine("  ▒▒          ▒▒  ");
+            sb.AppendLine("▒▒              ▒▒");
+            sb.AppendLine("▒▒              ▒▒");
+            sb.AppendLine("▒▒          ▒▒  ▒▒");
+            sb.AppendLine("▒▒          ▒▒  ▒▒");
+            sb.AppendLine("▒▒        ▒▒  ▒▒▒▒");
+            sb.AppendLine("▒▒        ▒▒  ▒▒▒▒");
+            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒    ");
+            image = sb.ToString();
         }
 
         public override bool Use()

@@ -123,10 +123,22 @@ namespace Project_TextRPG
                     Console.WriteLine("당신은 불량배와 시비가 붙어 한 대 맞았습니다. 체력이 5 감소합니다.");
                     Data.player.curHp -= 5;
                     Console.WriteLine($"현재 체력 : {Data.player.curHp} / {Data.player.maxHp}");
+                    if (Data.player.curHp < 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("당신은 결국 쓰러져 버렸습니다.");
+                        Thread.Sleep(1000);
+                        Data.player.PlayerDead();
+                    }
                     Thread.Sleep(2000);
                     break;
                 case 2:
-                    // TODO : 아이템 줍기 구현
+                    Console.WriteLine("길을 걷던 당신은 반짝거리는 무언가를 발견했습니다.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine();
+                    Console.WriteLine("당신은 작은 보석을 주웠습니다.");
+                    Data.inven.Add(new SmallJewel());
+                    Thread.Sleep(2000);
                     break;
                 case 3:
                     Console.WriteLine("하루종일 마을을 돌아다녔지만 아무일도 일어나지 않았습니다.");

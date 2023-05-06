@@ -33,6 +33,7 @@ namespace Project_TextRPG
             }
 
             inven.Add(new Potion());
+            inven.Add(new SmallJewel());
         }
 
         public static void InventoryMap()
@@ -93,6 +94,10 @@ namespace Project_TextRPG
             Slime slime2 = new Slime();
             slime2.point = new Point(7, 5);
             monsters.Add(slime2);
+
+            Dragon dragon = new Dragon();
+            dragon.point = new Point(12, 12);
+            monsters.Add(dragon);
         }
 
         public static void AddItem()
@@ -103,19 +108,23 @@ namespace Project_TextRPG
 
             if (percent < 10)
             {
-                // TODO : 희귀 장비
+                inven.Add(new LargeJewel());
+                Console.WriteLine("큰 보석을 얻었습니다.");
             }
             else if (percent < 30)
             {
-                // TODO : 괜찮은 장비
+                inven.Add(new SmallJewel());
+                Console.WriteLine("작은 보석을 얻었습니다.");
             }
             else if (percent < 60)
             {
                 inven.Add(new LargePotion());
+                Console.WriteLine("큰 포션을 얻었습니다.");
             }
             else
             {
                 inven.Add(new Potion());
+                Console.WriteLine("작은 포션을 얻었습니다.");
             }
 
             for (int i = 0; i < inven.Count; i++)

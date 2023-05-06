@@ -11,16 +11,16 @@ namespace Project_TextRPG
     {
         public char icon = '⊙';
         public string image;
-        public string name { get; set; }
+        public string name { get; protected set; }
         public Point point;
 
-        public int curHp { get; set; }
-        public int maxHp { get; set; }
-        public int ap { get; set; }
-        public int dp { get; set; }
-        public int speed { get; set; }
-        public int gold { get; set; }
-        public int exp { get; set; }
+        public int curHp { get; protected set; }
+        public int maxHp { get; protected set; }
+        public int ap { get; protected set; }
+        public int dp { get; protected set; }
+        public int speed { get; protected set; }
+        public int gold { get; protected set; }
+        public int exp { get; protected set; }
 
         public abstract void MoveAction();
 
@@ -77,6 +77,20 @@ namespace Project_TextRPG
                 Console.WriteLine($"{name}이 쓰러졌다!");
                 Thread.Sleep(1000);
             }
+        }
+
+        public void MonsterDead()
+        {
+            Console.Clear();
+            Console.WriteLine("전투가 종료되었습니다.");
+            Data.AddItem();
+            Thread.Sleep(1000);
+            Data.player.gold += gold;
+            Console.WriteLine($"{gold}골드를 획득했습니다.");
+            Thread.Sleep(1000);
+            Data.player.exp += exp;
+            Console.WriteLine($"{exp}경험치를 획득했습니다.");
+            Thread.Sleep(1000);
         }
     }
 }

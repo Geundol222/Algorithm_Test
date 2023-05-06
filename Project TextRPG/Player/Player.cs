@@ -8,20 +8,38 @@ namespace Project_TextRPG
 {
     public class Player
     {
+        Random rand = new Random();
+
         public char icon = '★';
         public Point point;
 
         public string name { get; set; }
         public int curHp { get; set; }
-        public int maxHp { get; set; }
-        public int curMp { get; set; }
-        public int maxMp { get; set; }
-        public int speed { get; set; }
-        public int level { get; set; }
+        public int maxHp { get; private set; }
+        public int curMp { get; private set; }
+        public int maxMp { get; private set; }
+        public int speed { get; private set; }
+        public int level { get; private set; }
         public int gold { get; set; }
-        public int ap { get; set; }
-        public int dp { get; set; }
+        public int ap { get; private set; }
+        public int dp { get; private set; }
         public float exp { get; set; }
+        public int deathCount { get; private set; }
+
+        public Player()
+        {
+            exp = 0;
+            maxHp = rand.Next(50, 100);
+            maxMp = rand.Next(20, 50);
+            curHp = maxHp;
+            curMp = maxMp;
+            speed = rand.Next(1, 11);
+            ap = rand.Next(5, 10);
+            dp = rand.Next(1, 5);
+            gold = 100;
+            level = 1;
+            deathCount = 0;
+        }
 
         public void Move(Direction dir)
         {
@@ -48,6 +66,11 @@ namespace Project_TextRPG
             }
         }
 
+        public void GetItem(Item item)
+        {
+            Data.inven.Add(item);
+        }
+
         public void UseItem(Item item)
         {
             if (item.Use())
@@ -67,6 +90,19 @@ namespace Project_TextRPG
             Console.WriteLine($"{name}이(가) {monster.name}을 공격합니다!");
             Thread.Sleep(1000);
             monster.TakeDamage(ap);
+        }
+
+        public void Deffence(Monster monster)
+        {
+            Console.WriteLine("당신은 방어태세를 취했습니다.");
+            Thread.Sleep(1000);
+            dp += 3;
+            Console.WriteLine("방어력이 약간 증가했습니다.");
+            Thread.Sleep(1000);
+
+            monster.Attack(this);
+
+            dp -= 3;
         }
 
         public void TakeDamage(int damage, Monster monster)
@@ -89,8 +125,71 @@ namespace Project_TextRPG
             if (curHp < 0)
             {
                 Console.WriteLine($"{name}이 쓰러졌다!");
+                deathCount++;
                 Thread.Sleep(1000);
             }
         }
+        public void PlayerDead()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            Console.WriteLine("잠시후...");
+            Console.Clear();
+
+            Data.player.curHp = Data.player.maxHp;
+            sb.AppendLine("여관 주인 : 괜찮아요?");
+            sb.AppendLine();
+            sb.AppendLine("당신 : 여기가 어디지..");
+            sb.AppendLine();
+            sb.AppendLine("여관 주인 : 마을 밖에 쓰러져있는걸 내가 데려 왔어요.");
+            sb.AppendLine();
+            sb.AppendLine("당신 : ...");
+            sb.AppendLine();
+            if (Data.player.deathCount == 1)
+            {
+                sb.AppendLine("여관 주인 : 이번엔 처음이니까 그냥 구해줬지만 다음에는 여관 사용료를 내야해요");
+                sb.AppendLine("안그래도 작은 여관에 매번 쓰러질때 마다 무료로 구해줄 수는 없으니까요");
+                sb.AppendLine();
+                sb.AppendLine("당신 : ... 네 감사합니다.");
+                sb.AppendLine();
+
+                char[] charArr = sb.ToString().ToCharArray();
+
+                for (int i = 0; i < charArr.Length; i++)
+                {
+                    Console.Write(charArr[i]);
+                    Thread.Sleep(30);
+                }
+                Thread.Sleep(1000);
+                Console.WriteLine("처음으로 쓰러졌을 때는 여관 사용료를 내지 않아도 됩니다.");
+                Thread.Sleep(1000);
+                Console.WriteLine("당신은 다시 마을로 돌아갑니다.");
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                sb.AppendLine("여관 주인 : 또 쓰러져버렸네요 이번에는 여관사용료를 내줘야겠어요");
+                sb.AppendLine("그래도 안쓰러우니 대신 원래 사용료 보단 할인해드릴게요");
+                sb.AppendLine();
+                sb.AppendLine("당신 : ... 네 감사합니다.");
+                sb.AppendLine();
+
+                char[] charArr = sb.ToString().ToCharArray();
+
+                for (int i = 0; i < charArr.Length; i++)
+                {
+                    Console.Write(charArr[i]);
+                    Thread.Sleep(30);
+                }
+                Thread.Sleep(1000);
+                Console.WriteLine("처음이 아니면 여관 사용료를 내야 합니다.");
+                Thread.Sleep(1000);
+                Data.player.gold -= 20;
+                Console.WriteLine($"당신은 여관 사용료 20골드를 낸 후 다시 마을로 돌아갑니다.");
+                Thread.Sleep(2000);
+            }
+
+        }
+
     }
 }
