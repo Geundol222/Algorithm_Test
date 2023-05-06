@@ -17,4 +17,6 @@ namespace Project_TextRPG
             this.y = y;
         }
     }
+
+    public enum Direction { Left, Right, Up, Down }
 }

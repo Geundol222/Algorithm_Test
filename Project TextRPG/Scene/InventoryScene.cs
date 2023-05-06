@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.ExceptionServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project_TextRPG
+{
+    public class InventoryScene : Scene
+    {
+        public InventoryScene(Game game) : base(game) { }
+
+        public override void Render()
+        {
+            PrintInventory();
+        }
+
+        public override void Update()
+        {
+            ConsoleKeyInfo input = Console.ReadKey();
+
+            switch (input.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    Data.inventory.Search(Direction.Up);
+                    break;
+                case ConsoleKey.DownArrow:
+                    Data.inventory.Search(Direction.Down);
+                    break;
+                case ConsoleKey.LeftArrow:
+                    Data.inventory.Search(Direction.Left);
+                    break;
+                case ConsoleKey.RightArrow:
+                    Data.inventory.Search(Direction.Right);
+                    break;
+                case ConsoleKey.Q:
+                    game.currentScene = game.sceneDic["마을"];
+                    break;
+                case ConsoleKey.Z:
+                    Data.player.UseItem(Data.inven[Data.inventory.itemIndex]);
+                    break;
+            }
+        }
+
+        public void PrintInventory()
+        {
+            Data.AddItem();
+
+            StringBuilder sb = new StringBuilder();
+            Item item = Data.inven[Data.inventory.itemIndex];
+
+            for (int y = 0; y < Data.inventoryMap.GetLength(0); y++)
+            {
+                for (int x = 0; x < Data.inventoryMap.GetLength(1); x++)
+                {
+                    sb.Append("□");
+                }
+                sb.AppendLine();
+            }
+            Console.Write(sb.ToString());
+
+            Console.WriteLine(" 방향키 : 아이템 탐색");
+            Console.WriteLine(" Q      : 나가기");
+            Console.WriteLine(" Z      : 아이템 사용");
+
+            if (Data.inven[Data.inventory.itemIndex] != null)
+            {
+                Console.WriteLine($"{item.name} X {Data.itemCount[Data.inventory.itemIndex]}");
+                Console.WriteLine($"설명 : {item.description}");
+            }
+
+            Console.SetCursorPosition(Data.inventory.point.x * 2, Data.inventory.point.y);
+            Console.Write(Data.inventory.icon);
+        }
+    }
+}

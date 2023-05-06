@@ -21,5 +21,15 @@ namespace Project_TextRPG
         public int ap { get; set; }
         public int dp { get; set; }
         public float exp { get; set; }
+
+        public void UseItem(Item item)
+        {
+            Data.itemCount[Data.inventory.itemIndex]--;
+
+            item.Use();
+
+            if (Data.itemCount[Data.inventory.itemIndex] < 0)
+                Data.inven.Remove(item);
+        }
     }
 }
