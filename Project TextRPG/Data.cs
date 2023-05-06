@@ -9,15 +9,20 @@ namespace Project_TextRPG
     public static class Data
     {
         public static Player player;
+        public static List<Monster> monsters;
+
         public static Inventory inventory;
         public static List<Item> inven;
         public static List<int> itemCount;
-        public static Queue<string> itemQueue;
         public static bool[,] inventoryMap;
+
+        public static bool[,] map;
 
         public static void Init()
         {
             player = new Player();
+            monsters = new List<Monster>();
+
             inventory = new Inventory();
             inven = new List<Item>();
             itemCount = new List<int>();
@@ -42,6 +47,52 @@ namespace Project_TextRPG
             };
 
             inventory.point = new Point(0, 0);
+        }
+
+        public static Monster MonsterInPos(Point point)
+        {
+            foreach (Monster monster in monsters)
+            {
+                if (monster.point.x == point.x &&
+                    monster.point.y == point.y)
+                {
+                    return monster;
+                }
+            }
+            return null;
+        }
+
+        public static void LoadLevel()
+        {
+            map = new bool[,]
+            {
+                { false, false, false, false, false, false, false, false, false, false, false, false, false, false },
+                { false,  true,  true,  true,  true, false,  true,  true,  true,  true,  true,  true,  true, false },
+                { false,  true,  true,  true,  true, false,  true,  true,  true,  true, false, false,  true, false },
+                { false,  true,  true,  true,  true, false,  true,  true,  true,  true, false,  true,  true, false },
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true, false,  true,  true, false },
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false },
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false },
+                { false,  true,  true,  true, false, false, false, false,  true,  true,  true,  true,  true, false },
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false },
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false },
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false,  true, false },
+                { false,  true, false,  true,  true,  true,  true,  true,  true,  true,  true, false,  true, false },
+                { false,  true, false,  true,  true,  true,  true,  true,  true,  true,  true, false,  true, false },
+                { false,  true, false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false },
+                { false,  true, false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false },
+                { false, false, false, false, false, false, false, false, false, false, false, false, false, false },
+            };
+
+            player.point = new Point(2, 2);
+
+            Slime slime1= new Slime();
+            slime1.point = new Point(3, 5);
+            monsters.Add(slime1);
+
+            Slime slime2 = new Slime();
+            slime2.point = new Point(7, 5);
+            monsters.Add(slime2);
         }
 
         public static void AddItem()

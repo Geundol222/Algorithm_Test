@@ -40,6 +40,7 @@ namespace Project_TextRPG
             sceneDic.Add("마을", new TownScene(this));
             sceneDic.Add("인벤토리", new InventoryScene(this));
             sceneDic.Add("여관", new TavernScene(this));
+            sceneDic.Add("마을 밖", new MapScene(this));
 
             currentScene = sceneDic["마을"];
         }
@@ -61,6 +62,11 @@ namespace Project_TextRPG
         public void Update()
         {
             currentScene.Update();
+        }
+
+        public void Battle(Monster monster)
+        {
+
         }
 
         public void Release()

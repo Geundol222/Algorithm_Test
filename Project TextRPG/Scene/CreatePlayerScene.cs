@@ -63,6 +63,7 @@ namespace Project_TextRPG
             sb.AppendLine($"마력        : {Data.player.curMp} / {Data.player.maxMp}");
             sb.AppendLine($"공격력      : {Data.player.ap}");
             sb.AppendLine($"방어력      : {Data.player.dp}");
+            sb.AppendLine($"스피드      : {Data.player.speed}");
             sb.AppendLine($"보유 골드   : {Data.player.gold}");
             sb.AppendLine($"경험치      : {Data.player.exp}");
             sb.AppendLine();
@@ -90,6 +91,7 @@ namespace Project_TextRPG
             Data.player.maxMp = rand.Next(20, 50);
             Data.player.curHp = Data.player.maxHp;
             Data.player.curMp = Data.player.maxMp;
+            Data.player.speed = rand.Next(1, 11);
             Data.player.ap = rand.Next(5, 10);
             Data.player.dp = rand.Next(1, 5);
             Data.player.gold = 100;

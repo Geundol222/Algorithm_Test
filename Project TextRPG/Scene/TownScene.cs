@@ -14,6 +14,7 @@ namespace Project_TextRPG
         {
             StringBuilder sb = new StringBuilder();
 
+            // 콘솔 글꼴 바꿔야 정상적으로 출력됨
             sb.AppendLine(@"                                                          |>>>");
             sb.AppendLine(@"                   _                      _                |");
             sb.AppendLine(@"    ____________ .' '.    _____/----/-\ .' './========\   / \");
@@ -65,6 +66,10 @@ namespace Project_TextRPG
                     TownEvent();
                     break;
                 case 3:
+                    Console.Clear();
+                    Console.WriteLine("당신은 마을 밖으로 나갑니다. (마을 밖은 몬스터가 출몰 합니다.)");
+                    Thread.Sleep(1000);
+                    LoadMap();
                     break;
                 case 4:
                     game.currentScene = game.sceneDic["여관"];
@@ -86,11 +91,12 @@ namespace Project_TextRPG
             sb.AppendLine($"당신({Data.player.name})의 스탯은 다음과 같습니다.");
             sb.AppendLine();
             sb.AppendLine("==============================");
-            sb.AppendLine($"HP   : {Data.player.curHp} / {Data.player.maxHp}");
-            sb.AppendLine($"MP   : {Data.player.curMp} / {Data.player.maxMp}");
-            sb.AppendLine($"AP   : {Data.player.ap}");
-            sb.AppendLine($"DP   : {Data.player.dp}");
-            sb.AppendLine($"EXP  : {Data.player.exp}");
+            sb.AppendLine($"HP     : {Data.player.curHp} / {Data.player.maxHp}");
+            sb.AppendLine($"MP     : {Data.player.curMp} / {Data.player.maxMp}");
+            sb.AppendLine($"AP     : {Data.player.ap}");
+            sb.AppendLine($"DP     : {Data.player.dp}");
+            sb.AppendLine($"SPEED  : {Data.player.speed}");
+            sb.AppendLine($"EXP    : {Data.player.exp}");
             sb.AppendLine("==============================");
 
             Console.WriteLine(sb.ToString());
@@ -134,6 +140,13 @@ namespace Project_TextRPG
             Console.CursorVisible = false;
             Data.InventoryMap();
             game.currentScene = game.sceneDic["인벤토리"];
+        }
+
+        private void LoadMap()
+        {
+            Console.CursorVisible = false;
+            Data.LoadLevel();
+            game.currentScene = game.sceneDic["마을 밖"];
         }
     }
 }

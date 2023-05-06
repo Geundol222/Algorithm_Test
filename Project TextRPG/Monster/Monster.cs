@@ -2,30 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class Player
+    public abstract class Monster
     {
-        public char icon = '★';
+        public char icon = '⊙';
+        public string image;
+        public string name { get; set; }
         public Point point;
 
-        public string name { get; set; }
         public int curHp { get; set; }
         public int maxHp { get; set; }
-        public int curMp { get; set; }
-        public int maxMp { get; set; }
-        public int speed { get; set; }
-        public int level { get; set; }
-        public int gold { get; set; }
         public int ap { get; set; }
         public int dp { get; set; }
-        public float exp { get; set; }
+        public int speed { get; set; }
+        public int gold { get; set; }
+        public int exp { get; set; }
 
-        public void Move(Direction dir)
+        public abstract void MoveAction();
+
+        protected void Move(Direction dir)
         {
-            Point prevPos = point;
+            Point prevPoint = point;
 
             switch (dir)
             {
@@ -42,42 +43,27 @@ namespace Project_TextRPG
                     point.x++;
                     break;
             }
+
             if (!Data.map[point.y, point.x])
-            {
-                point = prevPos;
-            }
-        }
+                point = prevPoint;
+        } 
 
-        public void UseItem(Item item)
+        public void Attack(Player player)
         {
-            if (item.Use())
-            {
-                Data.itemCount[Data.inventory.itemIndex]--;
-                if (Data.itemCount[Data.inventory.itemIndex] < 1)
-                    Data.inven.Remove(item);
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        public void Attack(Monster monster)
-        {
-            Console.WriteLine($"{name}이(가) {monster.name}을 공격합니다!");
+            Console.WriteLine($"{name}이(가) {player.name}을 공격합니다!");
             Thread.Sleep(1000);
-            monster.TakeDamage(ap);
+            player.TakeDamage(ap, this);
         }
 
-        public void TakeDamage(int damage, Monster monster)
+        public void TakeDamage(int damage)
         {
-            Console.WriteLine($"{name}은 {monster.name}에게 공격 받았습니다.");
+            Console.WriteLine($"{name}은 {Data.player.name}에게 공격 받았습니다.");
             Thread.Sleep(1000);
 
             if (damage > dp)
             {
                 curHp -= damage - dp;
-                Console.WriteLine($"{name}은 {damage - dp}의 데미지를 받았습니다.");
+                Console.WriteLine($"{name}은 {damage-dp}의 데미지를 받았습니다.");
                 Thread.Sleep(1000);
             }
             else
