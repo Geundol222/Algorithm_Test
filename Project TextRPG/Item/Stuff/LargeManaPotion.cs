@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class Potion : Item
+    public class LargeManaPotion : Item
     {
-        private int point = 10;
+        private int point = 30;
 
-        public Potion()
+        public LargeManaPotion()
         {
-            name = "포션";
-            description = $"평범한 포션, 플레이어의 체력을 {point}회복시킨다.";
-            price = 5;
+            name = "마나 포션";
+            description = $"큰 마나 포션, 플레이어의 마나를 {point}회복시킨다.";
+            price = 10;
+            type = ItemType.Stuff;
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("      ██████      ");
@@ -26,7 +26,7 @@ namespace Project_TextRPG
             sb.AppendLine("    ▒▒      ▒▒    ");
             sb.AppendLine("  ▒▒          ▒▒  ");
             sb.AppendLine("▒▒              ▒▒");
-            sb.AppendLine("▒▒              ▒▒");
+            sb.AppendLine("▒▒     MANA     ▒▒");
             sb.AppendLine("▒▒          ▒▒  ▒▒");
             sb.AppendLine("▒▒          ▒▒  ▒▒");
             sb.AppendLine("▒▒        ▒▒  ▒▒▒▒");
@@ -41,7 +41,7 @@ namespace Project_TextRPG
 
             if (Data.player.curHp >= Data.player.maxHp)
             {
-                Console.WriteLine("이미 체력이 전부 차있습니다.");
+                Console.WriteLine("이미 마나가 전부 차있습니다.");
                 Thread.Sleep(1000);
                 return false;
             }
@@ -49,14 +49,14 @@ namespace Project_TextRPG
             {
                 Console.WriteLine("포션을 사용합니다.");
                 Thread.Sleep(1000);
-                Console.WriteLine($"플레이어의 체력이 {point}만큼 회복됩니다.");
+                Console.WriteLine($"플레이어의 마나가 {point}만큼 회복됩니다.");
                 Thread.Sleep(1000);
-                Data.player.curHp += point;
+                Data.player.curMp += point;
 
-                if (Data.player.curHp > Data.player.maxHp)
-                    Data.player.curHp = Data.player.maxHp;
+                if (Data.player.curMp > Data.player.maxMp)
+                    Data.player.curMp = Data.player.maxMp;
 
-                Console.WriteLine($"현재 체력 : {Data.player.curHp} / {Data.player.maxHp}");
+                Console.WriteLine($"현재 마나 : {Data.player.curMp} / {Data.player.maxMp}");
                 Thread.Sleep(1000);
                 return true;
             }

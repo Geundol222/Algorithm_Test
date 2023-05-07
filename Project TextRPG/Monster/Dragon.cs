@@ -56,25 +56,7 @@ namespace Project_TextRPG
 
         public override void MoveAction()
         {
-            if (moveCount++ % 2 != 0)
-                return;
-
-            List<Point> path;
-            bool result = AStar.PathFinding(Data.map, new Point(point.x, point.y),
-                new Point(Data.player.point.x, Data.player.point.y), out path);
-
-            if (!result)
-                return;
-
-            if (path[1].y == point.y - 1)
-                Move(Direction.Up);
-            else if (path[1].y == point.y + 1)
-                Move(Direction.Down);
-            else if (path[1].x == point.x - 1)
-                Move(Direction.Left);
-            else
-                Move(Direction.Right);
-
+            
         }
     }
 }

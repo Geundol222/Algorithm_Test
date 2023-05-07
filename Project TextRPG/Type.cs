@@ -19,4 +19,6 @@ namespace Project_TextRPG
     }
 
     public enum Direction { Left, Right, Up, Down }
+
+    public enum ItemType { Stuff, Weapon, Armor }
 }

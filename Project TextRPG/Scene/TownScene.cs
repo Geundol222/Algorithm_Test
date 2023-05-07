@@ -15,17 +15,17 @@ namespace Project_TextRPG
             StringBuilder sb = new StringBuilder();
 
             // 콘솔 글꼴 바꿔야 정상적으로 출력됨
-            sb.AppendLine(@"                                                          |>>>");
-            sb.AppendLine(@"                   _                      _                |");
-            sb.AppendLine(@"    ____________ .' '.    _____/----/-\ .' './========\   / \");
-            sb.AppendLine(@"   //// ////// /V_.-._\  |.-.-.|===| _ |-----| u    u |  /___\");
+            sb.AppendLine(@"                                                           |>>>          ");
+            sb.AppendLine(@"                   _                      _                |             ");
+            sb.AppendLine(@"    ____________ .' '.    _____/----/-\ .' './========\   / \            ");
+            sb.AppendLine(@"   //// ////// /V_.-._\  |.-.-.|===| _ |-----| u    u |  /___\           ");
             sb.AppendLine(@"  // /// // ///==\ u |.  || | ||===||||| |T| |   ||   | .| u |_ _ _ _ _ _");
-            sb.AppendLine(@" ///////-\////====\==|:::::::::::::::::::::::::::::::::::|u u| U U U U U");
+            sb.AppendLine(@" ///////-\////====\==|:::::::::::::::::::::::::::::::::::|u u| U U U U U ");
             sb.AppendLine(@" |----/\u |--|++++|..|'''''''''''::::::::::::::''''''''''|+++|+-+-+-+-+-+");
             sb.AppendLine(@" |u u|u | |u ||||||..|              '::::::::'           |===|>=== _ _ ==");
             sb.AppendLine(@" |===|  |u|==|++++|==|              .::::::::.           | T |....| V |..");
-            sb.AppendLine(@" |u u|u | |u ||HH||         \|/    .::::::::::.");
-            sb.AppendLine(@" |===|_.|u|_.|+HH+|_              .::::::::::::.              _");
+            sb.AppendLine(@" |u u|u | |u ||HH||         \|/    .::::::::::.                          ");
+            sb.AppendLine(@" |===|_.|u|_.|+HH+|               .::::::::::::.                         ");
             sb.AppendLine();
             sb.AppendLine("당신은 마을에 있습니다. 행동을 선택해 주세요");
             sb.AppendLine();
@@ -61,6 +61,7 @@ namespace Project_TextRPG
             switch (command)
             {
                 case 1:
+                    game.currentScene = game.sceneDic["상점"];
                     break;
                 case 2:
                     TownEvent();
@@ -115,7 +116,7 @@ namespace Project_TextRPG
             {
                 case 0:
                     Console.WriteLine("Lucky! 당신은 길에서 10원짜리 동전을 주웠습니다.");
-                    Data.player.gold += 10;
+                    Data.player.GetGold(10);
                     Console.WriteLine($"보유 골드 : {Data.player.gold}");
                     Thread.Sleep(2000);
                     break;
@@ -136,8 +137,8 @@ namespace Project_TextRPG
                     Console.WriteLine("길을 걷던 당신은 반짝거리는 무언가를 발견했습니다.");
                     Thread.Sleep(1000);
                     Console.WriteLine();
-                    Console.WriteLine("당신은 작은 보석을 주웠습니다.");
-                    Data.inven.Add(new SmallJewel());
+                    Data.AddItem();
+                    Data.ItemChecker();
                     Thread.Sleep(2000);
                     break;
                 case 3:

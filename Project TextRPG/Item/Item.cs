@@ -9,15 +9,13 @@ namespace Project_TextRPG
     public class Item
     {
         public string image;
+        public ItemType type;
         public int price { get; protected set; }
         public string name { get; protected set; }
         public string description { get; protected set; }
 
         public virtual bool Use() { return true; }
 
-        public void Sell() 
-        {
-
-        }
+        public virtual void Equip() { }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,11 +17,11 @@ namespace Project_TextRPG
         public string name { get; set; }
         public int curHp { get; set; }
         public int maxHp { get; private set; }
-        public int curMp { get; private set; }
+        public int curMp { get; set; }
         public int maxMp { get; private set; }
         public int speed { get; private set; }
         public int level { get; private set; }
-        public int gold { get; set; }
+        public int gold { get; private set; }
         public int ap { get; private set; }
         public int dp { get; private set; }
         public float exp { get; set; }
@@ -40,6 +41,18 @@ namespace Project_TextRPG
             level = 1;
             deathCount = 0;
         }
+
+        public void GetGold(int gold) { this.gold += gold; }
+
+        public void LooseGold(int gold) { this.gold -= gold; }
+
+        public void GetAp(int ap) { this.ap += ap; }
+
+        public void LooseAp(int ap) { this.ap -= ap; }
+
+        public void GetDp(int dp) { this.dp += dp; }
+
+        public void LooseDp(int dp) { this.dp -= dp; }
 
         public void Move(Direction dir)
         {
@@ -71,13 +84,21 @@ namespace Project_TextRPG
             Data.inven.Add(item);
         }
 
+        public void Equip(Item item)
+        {
+            item.Equip();
+        }
+
         public void UseItem(Item item)
         {
             if (item.Use())
             {
                 Data.itemCount[Data.inventory.itemIndex]--;
                 if (Data.itemCount[Data.inventory.itemIndex] < 1)
+                {
                     Data.inven.Remove(item);
+                    Data.itemCount.Remove(Data.inventory.itemIndex);
+                }
             }
             else
             {
@@ -129,6 +150,7 @@ namespace Project_TextRPG
                 Thread.Sleep(1000);
             }
         }
+
         public void PlayerDead()
         {
             StringBuilder sb = new StringBuilder();
@@ -191,5 +213,34 @@ namespace Project_TextRPG
 
         }
 
+        public void PlayerLevelUp()
+        {
+            if (exp >= 100)
+            {
+                Console.Clear();
+                Console.WriteLine("축하합니다! 레벨업 하였습니다!");
+                Thread.Sleep(1000);
+                level++;
+                Console.WriteLine($"현재 레벨 : {level}");
+                Thread.Sleep(1000);
+                Console.WriteLine("스탯 변화");
+                Thread.Sleep(1000);
+                Console.WriteLine("==============================");
+                Console.WriteLine($"HP : {maxHp} + {level * 5}");
+                maxHp += level * 5;
+                Console.WriteLine($"MP : {maxMp} + {level * 2}");
+                maxMp += level * 2;
+                Console.WriteLine($"AP : {ap} + {level + 5}");
+                ap += level + 5;
+                Console.WriteLine($"DP : {dp} + {level + 1}");
+                dp += level + 1;
+                Console.WriteLine($"Speed : {speed} + 1");
+                speed++;
+                Console.WriteLine("==============================");
+                exp = 0;
+            }
+            else
+                return;
+        }
     }
 }

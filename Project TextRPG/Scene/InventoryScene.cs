@@ -35,6 +35,7 @@ namespace Project_TextRPG
                     Data.inventory.Search(Direction.Right);
                     break;
                 case ConsoleKey.Q:
+                    Data.inventory.itemIndex = 0;
                     game.currentScene = game.sceneDic["마을"];
                     break;
                 case ConsoleKey.Z:

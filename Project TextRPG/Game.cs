@@ -43,9 +43,12 @@ namespace Project_TextRPG
             sceneDic.Add("인벤토리", new InventoryScene(this));
             sceneDic.Add("여관", new TavernScene(this));
             sceneDic.Add("마을 밖", new MapScene(this));
+            sceneDic.Add("상점", new MarketScene(this));
+            sceneDic.Add("판매", new MarketSellScene(this));
+            sceneDic.Add("구매", new MarketBuyScene(this));
             battleScene = new BattleScene(this);
 
-            currentScene = sceneDic["메인메뉴"];
+            currentScene = sceneDic["마을"];
         }
 
         public void EndGame()

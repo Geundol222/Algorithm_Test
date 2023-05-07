@@ -17,19 +17,19 @@ namespace Project_TextRPG
 
             Console.Clear();
 
-            tavern.AppendLine("        (");
-            tavern.AppendLine("");
-            tavern.AppendLine("           )");
-            tavern.AppendLine("         ( _   _._");
-            tavern.AppendLine("          |_|-'_~_`-._");
-            tavern.AppendLine("      _.-'-_~_-~_-~-_`-._");
-            tavern.AppendLine("  _.-'_~-_~-_-~-_~_~-_~-_`-._");
-            tavern.AppendLine(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            tavern.AppendLine("   |  []  []   []   []  [] |");
-            tavern.AppendLine("   |           __    ___   |");
-            tavern.AppendLine(" ._|  []  []  | .|  [___]  |");
-            tavern.AppendLine(" |=|________()|__|()_______|");
-            tavern.AppendLine("^^^^^^^^^^^^^^^ === ^^^^^^^^^^^^^^^^^");
+            tavern.AppendLine(@"        (                            ");
+            tavern.AppendLine(@"                                     ");
+            tavern.AppendLine(@"           )                         ");
+            tavern.AppendLine(@"         ( _   _._                   ");
+            tavern.AppendLine(@"          |_|-'_~_`-._               ");
+            tavern.AppendLine(@"      _.-'-_~_-~_-~-_`-._            ");
+            tavern.AppendLine(@"  _.-'_~-_~-_-~-_~_~-_~-_`-._        ");
+            tavern.AppendLine(@" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       ");
+            tavern.AppendLine(@"   |  []  []   []   []  [] |         ");
+            tavern.AppendLine(@"   |           __    ___   |         ");
+            tavern.AppendLine(@" ._|  []  []  | .|  [___]  |         ");
+            tavern.AppendLine(@" |=|________()|__|()_______|         ");
+            tavern.AppendLine(@"^^^^^^^^^^^^^^^ === ^^^^^^^^^^^^^^^^^");
 
             sb.AppendLine("당신은 여관으로 들어갑니다.");
             sb.AppendLine();
@@ -72,7 +72,7 @@ namespace Project_TextRPG
                     sb.AppendLine("당신 : 네 여기 50 골드요");
                     sb.AppendLine();
                     sb.AppendLine("50골드를 지불했습니다.");
-                    Data.player.gold -= 50;
+                    Data.player.LooseGold(50);
                     sb.AppendLine($"현재 골드 : {Data.player.gold}");
                     sb.AppendLine();
                     sb.AppendLine("여관주인 : 예~ 감사합니다. 들어오시죠");

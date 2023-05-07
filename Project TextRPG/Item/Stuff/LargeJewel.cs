@@ -13,6 +13,7 @@ namespace Project_TextRPG
             name = "큰 보석";
             description = $"큰 보석, 꽤나 가치가 있을거 같이 생겼다.";
             price = 50;
+            type = ItemType.Stuff;
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("      ██████████████      ");

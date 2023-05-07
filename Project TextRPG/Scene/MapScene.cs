@@ -34,6 +34,12 @@ namespace Project_TextRPG
                 case ConsoleKey.RightArrow:
                     Data.player.Move(Direction.Right);
                     break;
+                case ConsoleKey.Q:
+                    Console.Clear();
+                    Console.WriteLine("마을로 돌아갑니다.");
+                    Thread.Sleep(1000);
+                    game.currentScene = game.sceneDic["마을"];
+                    return;
             }
 
             Monster monster = Data.MonsterInPos(Data.player.point);
@@ -75,6 +81,9 @@ namespace Project_TextRPG
                 sb.AppendLine();
             }
             Console.WriteLine(sb.ToString());
+
+            Console.WriteLine("방향키 : 이동");
+            Console.WriteLine("Q : 마을로 돌아가기");
 
             Console.ForegroundColor = ConsoleColor.Green;
             foreach (Monster monster in Data.monsters)

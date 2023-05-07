@@ -17,11 +17,12 @@ namespace Project_TextRPG
         public override void Render()
         {
             Console.WriteLine();
-            Console.WriteLine($"{monster.name}    {monster.curHp,3} / {monster.maxHp,3}");
+            Console.WriteLine($"{monster.name}    체력 : {monster.curHp,3} / {monster.maxHp,3}");
             Console.WriteLine($"공격력 : {monster.ap}, 방어력 : {monster.dp}");
             Console.WriteLine(monster.image);
             Console.WriteLine();
-            Console.WriteLine($"플레이어    {Data.player.curHp,3} / {Data.player.maxHp}");
+            Console.WriteLine($"플레이어    체력 : {Data.player.curHp,3} / {Data.player.maxHp}");
+            Console.WriteLine($"            마력 : {Data.player.curMp,3} / {Data.player.maxMp}");
             Console.WriteLine($"공격력 : {Data.player.ap}, 방어력 : {Data.player.dp}");
 
             Console.WriteLine();
