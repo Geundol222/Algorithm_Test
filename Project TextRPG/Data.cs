@@ -8,6 +8,8 @@ namespace Project_TextRPG
 {
     public static class Data
     {
+        public static bool isTest = false;
+
         public static Player player;
         public static List<Player> classList;
         public static List<Monster> monsters;

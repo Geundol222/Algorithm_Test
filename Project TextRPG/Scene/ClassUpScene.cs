@@ -99,17 +99,30 @@ namespace Project_TextRPG
                 switch (command)
                 {
                     case 1:
-                        ClassUpRender();
-                        Console.Clear();
-                        Console.WriteLine("축하합니다! 전직이 완료되었습니다!");
-                        Thread.Sleep(1000);
-                        Console.WriteLine($"당신의 직업은 {Data.classList[classIndex].className}입니다.");
-                        Thread.Sleep(2000);
-                        Data.player = Data.classList[classIndex];
-                        game.currentScene = game.sceneDic["마을"];
-                        isClassChoice = false;
-                        isChoice = false;
-                        game.currentScene = game.sceneDic["마을"];
+                        if (!Data.isTest)
+                        {
+                            ClassUpRender();
+                            Console.Clear();
+                            Console.WriteLine("축하합니다! 전직이 완료되었습니다!");
+                            Thread.Sleep(1000);
+                            Console.WriteLine($"당신의 직업은 {Data.classList[classIndex].className}입니다.");
+                            Data.player = Data.classList[classIndex];
+                            Thread.Sleep(2000);
+                            isClassChoice = false;
+                            isChoice = false;
+                            game.currentScene = game.sceneDic["마을"];
+                        }
+                        else
+                        {
+                            ClassUpRender();
+                            Console.Clear();
+                            Console.WriteLine("전직 체험은 여기까지입니다. 실제 전직은 일어나지 않습니다.");
+                            Thread.Sleep(2000);
+                            isClassChoice = false;
+                            isChoice = false;
+                            Data.isTest = false;
+                            game.currentScene = game.sceneDic["마을"];
+                        }
                         return;
                     case 2:
                         isClassChoice = false;
@@ -200,8 +213,7 @@ namespace Project_TextRPG
                             break;
                     }
                 }
-            }
-            
+            }            
         }
 
         public void GuildRender()
