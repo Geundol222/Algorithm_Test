@@ -49,8 +49,8 @@ namespace _11._PathFinding_Test
                 // 도착했다고 판단해서 경로반환
                 if (nextNode.point.x == end.x && nextNode.point.y == end.y)             // 다음 노드의 x, y가 end의 x, y와 같을 경우
                 {
-                    Point? pathPoint = end;
-                    path = new List<Point>();
+                    Point? pathPoint = end;                                             // 정점을 end로 한다.
+                    path = new List<Point>();                                           // path를 초기화한다.
 
                     while (pathPoint != null)
                     {
@@ -97,18 +97,19 @@ namespace _11._PathFinding_Test
             return false;
         }
 
+        // 휴리스틱 : 최상의 경로를 추정하는 순위값 타일맵에서는 대각선의 길이를 의미하며, 휴리스틱에 의해 경로 탐색의 효율이 결정된다.
         public static int Heuristic(Point start, Point end)
         {
             int xSize = Math.Abs(start.x - end.x);
             int ySize = Math.Abs(start.y - end.y);
 
-            return CostStraight * (int)Math.Sqrt(xSize * xSize + ySize * ySize);
+            return CostStraight * (int)Math.Sqrt(xSize * xSize + ySize * ySize);        // 피타고라스 정리 c^2 = (root)(a^2 + b^2)
         }
 
         public class ASNode
         {
-            public Point point;
-            public Point? parent;
+            public Point point;         // 현재 정점 위치
+            public Point? parent;       // 현재 정점을 탐색했던 정점 (parent 좌표는 출발선에서는 없을 수 있으므로 Nullable 사용)
 
             public int f;
             public int g;
