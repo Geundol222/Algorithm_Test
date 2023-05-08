@@ -36,6 +36,7 @@ namespace Project_TextRPG
                     break;
                 case ConsoleKey.Q:
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("마을로 돌아갑니다.");
                     Thread.Sleep(1000);
                     game.currentScene = game.sceneDic["마을"];

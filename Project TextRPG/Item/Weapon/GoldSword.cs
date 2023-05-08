@@ -17,22 +17,22 @@ namespace Project_TextRPG
             type = ItemType.Weapon;
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("                          ▓▓▓▓▓▓");
-            sb.AppendLine("    I'm Gold            ▓▓  ▒▒▓▓");
-            sb.AppendLine("                      ▓▓  ▒▒  ▓▓");
-            sb.AppendLine("                    ▓▓  ▒▒  ▓▓  ");
-            sb.AppendLine("                  ▓▓  ▒▒  ▓▓    ");
-            sb.AppendLine("                ▓▓  ▒▒  ▓▓      ");
+            sb.AppendLine("                ░░        ▓▓▓▓▓▓");
+            sb.AppendLine("    I'm Gold  ░░  ░░    ▓▓  ▒▒▓▓");
+            sb.AppendLine("                ░░    ▓▓  ▒▒  ▓▓");
+            sb.AppendLine("         ░░         ▓▓  ▒▒  ▓▓  ");
+            sb.AppendLine("       ░░  ░░     ▓▓  ▒▒  ▓▓    ");
+            sb.AppendLine("         ░░     ▓▓  ▒▒  ▓▓      ");
             sb.AppendLine("    ▓▓▓▓      ▓▓  ▒▒  ▓▓        ");
-            sb.AppendLine("    ▓▓▒▒▓▓  ▓▓  ▒▒  ▓▓          ");
-            sb.AppendLine("      ▓▓▒▒▓▓  ▒▒  ▓▓            ");
-            sb.AppendLine("      ▓▓▒▒▓▓▒▒  ▓▓              ");
+            sb.AppendLine("    ▓▓▒▒▓▓  ▓▓  ▒▒  ▓▓     ░░   ");
+            sb.AppendLine("      ▓▓▒▒▓▓  ▒▒  ▓▓     ░░  ░░ ");
+            sb.AppendLine("      ▓▓▒▒▓▓▒▒  ▓▓         ░░   ");
             sb.AppendLine("        ▓▓▒▒▓▓▓▓                ");
             sb.AppendLine("      ▓▓▓▓▓▓▒▒▒▒▓▓              ");
             sb.AppendLine("    ▓▓▓▓██  ▓▓▓▓▒▒▓▓            ");
             sb.AppendLine("▓▓▓▓▓▓██        ▓▓▓▓            ");
-            sb.AppendLine("▓▓  ▓▓                          ");
-            sb.AppendLine("▓▓▓▓▓▓                          ");
+            sb.AppendLine("▓▓  ▓▓     ░░                   ");
+            sb.AppendLine("▓▓▓▓▓▓   ░░  ░░                 ");
             image = sb.ToString();
         }
     }

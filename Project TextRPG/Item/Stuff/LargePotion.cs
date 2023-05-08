@@ -6,32 +6,31 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class LargePotion : Item
+    public class LargePotion : Stuff
     {
-        private int point = 30;
-
         public LargePotion()
         {
+            point = 30;
             name = "큰포션";
             description = $"커다란 포션, 플레이어의 체력을 {point}회복시킨다.";
             price = 10;
             type = ItemType.Stuff;
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("      ██████      ");
-            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒    ");
-            sb.AppendLine("    ▒▒██████▒▒    ");
-            sb.AppendLine("      ▒▒  ▒▒      ");
-            sb.AppendLine("      ▒▒  ▒▒      ");
-            sb.AppendLine("    ▒▒      ▒▒    ");
-            sb.AppendLine("  ▒▒          ▒▒  ");
-            sb.AppendLine("▒▒              ▒▒");
-            sb.AppendLine("▒▒     HEAL     ▒▒");
-            sb.AppendLine("▒▒          ▒▒  ▒▒");
-            sb.AppendLine("▒▒          ▒▒  ▒▒");
-            sb.AppendLine("▒▒        ▒▒  ▒▒▒▒");
-            sb.AppendLine("▒▒        ▒▒  ▒▒▒▒");
-            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒    ");
+            sb.AppendLine("        ████████        ");
+            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ");
+            sb.AppendLine("    ▒▒▒▒████████▒▒▒▒    ");
+            sb.AppendLine("      ▒▒        ▒▒      ");
+            sb.AppendLine("      ▒▒        ▒▒      ");
+            sb.AppendLine("    ▒▒            ▒▒    ");
+            sb.AppendLine("  ▒▒                ▒▒  ");
+            sb.AppendLine("▒▒                    ▒▒");
+            sb.AppendLine("▒▒        HEAL        ▒▒");
+            sb.AppendLine("▒▒                ▒▒  ▒▒");
+            sb.AppendLine("▒▒                ▒▒  ▒▒");
+            sb.AppendLine("▒▒              ▒▒  ▒▒▒▒");
+            sb.AppendLine("▒▒              ▒▒  ▒▒▒▒");
+            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ");
             image = sb.ToString();
         }
 

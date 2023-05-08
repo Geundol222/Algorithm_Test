@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class LargeJewel : Item
+    public class LargeJewel : Stuff
     {
         public LargeJewel()
         {

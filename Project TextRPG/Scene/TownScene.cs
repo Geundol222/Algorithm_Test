@@ -41,6 +41,11 @@ namespace Project_TextRPG
             sb.AppendLine("5. 인벤토리를 확인한다.");
             sb.AppendLine();
             sb.AppendLine("6. 스탯을 확인한다.");
+            if (Data.player.PlayerClassUp())
+            {
+                sb.AppendLine();
+                sb.AppendLine("7. 진급을 하러 간다.");
+            }
             sb.AppendLine("============================================");
 
             Console.WriteLine(sb.ToString());
@@ -80,8 +85,11 @@ namespace Project_TextRPG
                     break;
                 case 6:
                     PlayerStat();
-                    break;
+                    break;                    
             }
+
+            if (command == 7)
+                game.currentScene = game.sceneDic["전직"];
         }
 
         private void PlayerStat()
@@ -89,9 +97,11 @@ namespace Project_TextRPG
             StringBuilder sb = new StringBuilder();
 
             Console.Clear();
-            sb.AppendLine($"당신({Data.player.name})의 스탯은 다음과 같습니다.");
+            sb.AppendLine("당신의 스탯은 다음과 같습니다.");
             sb.AppendLine();
+            sb.AppendLine($"{Data.player.name} : {Data.player.className}");
             sb.AppendLine("==============================");
+            sb.AppendLine($"LEVEL  : {Data.player.level}");
             sb.AppendLine($"HP     : {Data.player.curHp} / {Data.player.maxHp}");
             sb.AppendLine($"MP     : {Data.player.curMp} / {Data.player.maxMp}");
             sb.AppendLine($"AP     : {Data.player.ap}");
@@ -158,8 +168,17 @@ namespace Project_TextRPG
         private void LoadMap()
         {
             Console.CursorVisible = false;
-            Data.LoadLevel();
-            game.currentScene = game.sceneDic["마을 밖"];
+
+            if (Data.enterOnce)
+            {
+                game.currentScene = game.sceneDic["마을 밖"];
+            }
+            else
+            {
+                Data.LoadLevel();
+                game.currentScene = game.sceneDic["마을 밖"];
+                Data.enterOnce = true;
+            }
         }
     }
 }

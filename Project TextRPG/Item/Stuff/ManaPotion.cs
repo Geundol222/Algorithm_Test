@@ -9,12 +9,11 @@ using System.Xml.Linq;
 
 namespace Project_TextRPG
 {
-    public class ManaPotion : Item
+    public class ManaPotion : Stuff
     {
-        private int point = 10;
-
         public ManaPotion()
         {
+            point = 10;
             name = "마나 포션";
             description = $"평범한 마나 포션, 플레이어의 마나를 {point}회복시킨다.";
             price = 5;

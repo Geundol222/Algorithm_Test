@@ -17,20 +17,23 @@ namespace Project_TextRPG
             type = ItemType.Armor;
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("      ████        ████      ");
-            sb.AppendLine("  ████░░░░██    ██░░░░████  ");
-            sb.AppendLine("██░░░░░░░░██    ██░░░░░░▒▒██");
-            sb.AppendLine("██░░░░░░░░░░████░░░░░░░░▒▒██");
-            sb.AppendLine("██▒▒░░    ░░▓▓▓▓░░░░░░▒▒▒▒██");
-            sb.AppendLine("  ██░░  ░░░░▓▓▓▓░░░░▒▒▒▒██  ");
-            sb.AppendLine("  ██▒▒░░░░░░░░░░░░░░▒▒▒▒██  ");
-            sb.AppendLine("    ██░░░░░░▓▓▓▓░░░░▒▒██    ");
-            sb.AppendLine("    ██░░░░░░▓▓▓▓░░▒▒▒▒██    ");
-            sb.AppendLine("    ██▒▒░░░░░░░░▒▒▒▒▒▒██    ");
-            sb.AppendLine("    ██▒▒▒▒▒▒████▒▒▒▒▒▒██    ");
-            sb.AppendLine("      ██▒▒▒▒████▒▒▒▒██      ");
-            sb.AppendLine("        ████████████        ");
-            sb.AppendLine("          I'm Gold          ");
+            sb.AppendLine("       ░░                               ");
+            sb.AppendLine("     ░░  ░░                             ");
+            sb.AppendLine("       ░░                          ░░   ");
+            sb.AppendLine("            ████        ████     ░░  ░░ ");
+            sb.AppendLine("        ████░░░░██    ██░░░░████   ░░   ");
+            sb.AppendLine("      ██░░░░░░░░██    ██░░░░░░▒▒██      ");
+            sb.AppendLine("      ██░░░░░░░░░░████░░░░░░░░▒▒██      ");
+            sb.AppendLine("      ██▒▒░░    ░░▓▓▓▓░░░░░░▒▒▒▒██      ");
+            sb.AppendLine("        ██░░  ░░░░▓▓▓▓░░░░▒▒▒▒██        ");
+            sb.AppendLine("        ██▒▒░░░░░░░░░░░░░░▒▒▒▒██        ");
+            sb.AppendLine("          ██░░░░░░▓▓▓▓░░░░▒▒██          ");
+            sb.AppendLine("          ██░░░░░░▓▓▓▓░░▒▒▒▒██          ");
+            sb.AppendLine("          ██▒▒░░░░░░░░▒▒▒▒▒▒██          ");
+            sb.AppendLine("    ░░    ██▒▒▒▒▒▒████▒▒▒▒▒▒██     ░░   ");
+            sb.AppendLine("  ░░  ░░    ██▒▒▒▒████▒▒▒▒██     ░░  ░░ ");
+            sb.AppendLine("    ░░        ████████████         ░░   ");
+            sb.AppendLine("                I'm Gold                ");
             image = sb.ToString();
         }
     }

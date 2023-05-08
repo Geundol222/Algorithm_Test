@@ -29,30 +29,11 @@ namespace Project_TextRPG
                 Console.WriteLine($"몇 개 파시겠습니까? : {sellCount}");
                 Console.WriteLine("위, 아래 : 1단위 증감   /   왼쪽, 오른쪽 : 10단위 증감");
                 Console.WriteLine("Z : 확인");
-                Console.WriteLine("X : 취소");
+                Console.WriteLine("Q : 취소");
             }
             else
             {
-                for (int i = 0; i < Data.inven.Count; i++)
-                {
-                    if (Data.inven.Count < 1)
-                    {
-                        Console.WriteLine("팔 수 있는 아이템이 없습니다.");
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"  {i} : {Data.inven[i].name} x {Data.itemCount[i]}");
-                    }
-                }
-                Console.WriteLine();
-                Console.WriteLine("방향키 위, 아래 : 아이템 선택");
-                Console.WriteLine("Q : 판매 취소");
-                Console.WriteLine("Z : 판매");
-
-
-                Console.SetCursorPosition(Data.choice.choicePoint.x, Data.choice.choicePoint.y);
-                Console.Write(Data.choice.icon);
+                PrintMarketchoice();
             }            
         }
 
@@ -99,10 +80,14 @@ namespace Project_TextRPG
                         }                        
                         Thread.Sleep(1000);
                         Data.inventory.itemIndex = 0;
+                        Data.inventory.point.x = 0;
+                        Data.inventory.point.y = 0;
                         sellCount = 1;
                         isSell = false;
                         break;
-                    case ConsoleKey.X:
+                    case ConsoleKey.Q:
+                        isSell = false;
+                        game.currentScene = this;
                         return;
                 }
             }
@@ -111,22 +96,61 @@ namespace Project_TextRPG
                 switch (choice.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        Data.choice.Search(Direction.Up);
+                        Data.inventory.Search(Direction.Up);
                         break;
                     case ConsoleKey.DownArrow:
-                        Data.choice.Search(Direction.Down);
+                        Data.inventory.Search(Direction.Down);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        Data.inventory.Search(Direction.Left);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        Data.inventory.Search(Direction.Right);
                         break;
                     case ConsoleKey.Q:
-                        Console.Clear();
-                        Console.WriteLine("마을로 돌아갑니다.");
-                        Thread.Sleep(1000);
-                        game.currentScene = game.sceneDic["마을"];
+                        game.currentScene = game.sceneDic["상점"];
                         return;
                     case ConsoleKey.Z:
                         isSell = true;
                         break;
                 }
             }
+        }
+
+        public void PrintMarketchoice()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int y = 0; y < Data.inventoryMap.GetLength(0); y++)
+            {
+                for (int x = 0; x < Data.inventoryMap.GetLength(1); x++)
+                {
+                    sb.Append("□");
+                }
+                sb.AppendLine();
+            }
+            Console.Write(sb.ToString());
+
+            Console.WriteLine($"보유 골드 : {Data.player.gold}");
+            Console.WriteLine();
+
+            if (Data.inven.Count > 0)
+            {
+                Item item = Data.inven[Data.inventory.itemIndex];
+                int count = Data.itemCount[Data.inventory.itemIndex];
+                Console.WriteLine($"{item.name} X {count}");
+                Console.WriteLine(item.image);
+                Console.WriteLine($"{item.description}");
+                Console.WriteLine($"아이템 가치 : {item.price}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(" 방향키 : 아이템 탐색");
+            Console.WriteLine(" Q      : 나가기");
+            Console.WriteLine(" Z      : 아이템 판매");
+
+            Console.SetCursorPosition(Data.inventory.point.x, Data.inventory.point.y);
+            Console.Write(Data.inventory.icon);
         }
     }
 }

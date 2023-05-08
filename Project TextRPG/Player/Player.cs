@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Project_TextRPG
@@ -12,23 +13,28 @@ namespace Project_TextRPG
         Random rand = new Random();
 
         public char icon = '★';
+        public string image;
+        public string description;
         public Point point;
 
         public string name { get; set; }
+        public string className { get; protected set; }
         public int curHp { get; set; }
-        public int maxHp { get; private set; }
+        public int maxHp { get; protected set; }
         public int curMp { get; set; }
-        public int maxMp { get; private set; }
-        public int speed { get; private set; }
-        public int level { get; private set; }
-        public int gold { get; private set; }
-        public int ap { get; private set; }
-        public int dp { get; private set; }
+        public int maxMp { get; protected set; }
+        public int speed { get; protected set; }
+        public int level { get; protected set; }
+        public int gold { get; protected set; }
+        public int ap { get; protected set; }
+        public int dp { get; protected set; }
         public float exp { get; set; }
-        public int deathCount { get; private set; }
+        public int deathCount { get; protected set; }
 
         public Player()
         {
+            className = "초보자";
+            level = 10;
             exp = 0;
             maxHp = rand.Next(50, 100);
             maxMp = rand.Next(20, 50);
@@ -38,7 +44,6 @@ namespace Project_TextRPG
             ap = rand.Next(5, 10);
             dp = rand.Next(1, 5);
             gold = 100;
-            level = 1;
             deathCount = 0;
         }
 
@@ -98,6 +103,9 @@ namespace Project_TextRPG
                 {
                     Data.inven.Remove(item);
                     Data.itemCount.Remove(Data.inventory.itemIndex);
+                    Data.inventory.itemIndex = 0;
+                    Data.inventory.point.x = 0;
+                    Data.inventory.point.y = 0;
                 }
             }
             else
@@ -155,7 +163,14 @@ namespace Project_TextRPG
         {
             StringBuilder sb = new StringBuilder();
 
+            Console.Clear();
+            Console.WriteLine("당신은 더 이상 싸울 힘이 없습니다.");
+            Thread.Sleep(1000);
+            Console.WriteLine("당신은 결국 쓰러져 버렸습니다.");
+            Thread.Sleep(1000);
+            Console.Clear();
             Console.WriteLine("잠시후...");
+            Thread.Sleep(1000);
             Console.Clear();
 
             Data.player.curHp = Data.player.maxHp;
@@ -215,6 +230,7 @@ namespace Project_TextRPG
 
         public void PlayerLevelUp()
         {
+            Console.Clear();
             if (exp >= 100)
             {
                 Console.Clear();
@@ -234,13 +250,40 @@ namespace Project_TextRPG
                 ap += level + 5;
                 Console.WriteLine($"DP : {dp} + {level + 1}");
                 dp += level + 1;
-                Console.WriteLine($"Speed : {speed} + 1");
-                speed++;
+                if (speed >= 10)
+                    Console.WriteLine("스피드는 10이 Max입니다. 더이상 오르지 않습니다.");
+                else
+                {
+                    Console.WriteLine($"Speed : {speed} + 1");
+                    speed++;
+                }                
                 Console.WriteLine("==============================");
                 exp = 0;
+
+                Console.WriteLine();
+                Console.WriteLine("계속하려면 아무키나 누르십시오.");
+                Console.ReadKey();
             }
             else
                 return;
+        }
+
+        public bool PlayerClassUp()
+        {
+            if (level >= 10 && className == "초보자")
+            {
+                Console.Clear();
+                Console.WriteLine();
+                Console.WriteLine("축하합니다 진급 자격을 얻었습니다.");
+                Thread.Sleep(1000);
+                Console.WriteLine("이제 마을에 진급 선택지가 생겼습니다. 진급하려면 해당 선택지를 선택해주세요");
+                Thread.Sleep(2000);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

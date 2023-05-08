@@ -6,32 +6,31 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class LargeManaPotion : Item
+    public class LargeManaPotion : Stuff
     {
-        private int point = 30;
-
         public LargeManaPotion()
         {
+            point = 30;
             name = "마나 포션";
-            description = $"큰 마나 포션, 플레이어의 마나를 {point}회복시킨다.";
+            description = $"커다란 마나 포션, 플레이어의 마나를 {point}회복시킨다.";
             price = 10;
             type = ItemType.Stuff;
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("      ██████      ");
-            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒    ");
-            sb.AppendLine("    ▒▒██████▒▒    ");
-            sb.AppendLine("      ▒▒  ▒▒      ");
-            sb.AppendLine("      ▒▒  ▒▒      ");
-            sb.AppendLine("    ▒▒      ▒▒    ");
-            sb.AppendLine("  ▒▒          ▒▒  ");
-            sb.AppendLine("▒▒              ▒▒");
-            sb.AppendLine("▒▒     MANA     ▒▒");
-            sb.AppendLine("▒▒          ▒▒  ▒▒");
-            sb.AppendLine("▒▒          ▒▒  ▒▒");
-            sb.AppendLine("▒▒        ▒▒  ▒▒▒▒");
-            sb.AppendLine("▒▒        ▒▒  ▒▒▒▒");
-            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒    ");
+            sb.AppendLine("        ████████        ");
+            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ");
+            sb.AppendLine("    ▒▒▒▒████████▒▒▒▒    ");
+            sb.AppendLine("      ▒▒        ▒▒      ");
+            sb.AppendLine("      ▒▒        ▒▒      ");
+            sb.AppendLine("    ▒▒            ▒▒    ");
+            sb.AppendLine("  ▒▒                ▒▒  ");
+            sb.AppendLine("▒▒                    ▒▒");
+            sb.AppendLine("▒▒        MANA        ▒▒");
+            sb.AppendLine("▒▒                ▒▒  ▒▒");
+            sb.AppendLine("▒▒                ▒▒  ▒▒");
+            sb.AppendLine("▒▒              ▒▒  ▒▒▒▒");
+            sb.AppendLine("▒▒              ▒▒  ▒▒▒▒");
+            sb.AppendLine("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ");
             image = sb.ToString();
         }
 

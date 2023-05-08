@@ -88,8 +88,8 @@ namespace Project_TextRPG
             Data.player.GetGold(gold);
             Console.WriteLine($"{gold}골드를 획득했습니다.");
             Thread.Sleep(1000);
-            Data.player.exp += (exp / Data.player.level) * (Data.player.level / 2);
-            Console.WriteLine($"{(exp / Data.player.level) * (Data.player.level / 2)}경험치를 획득했습니다.");
+            Data.player.exp += (exp / Data.player.level) + (Data.player.level / 2);
+            Console.WriteLine($"{(exp / Data.player.level) + (Data.player.level / 2)}경험치를 획득했습니다.");
             Thread.Sleep(1000);
             Data.player.PlayerLevelUp();
         }

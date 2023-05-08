@@ -73,29 +73,38 @@ namespace Project_TextRPG
             if (Data.player.speed > monster.speed)
             {
                 Data.player.Attack(monster);
-                if (monster.curHp < 0)
+                if (monster.curHp <= 0)
                 {
                     monster.MonsterDead();
                     game.currentScene = game.sceneDic["마을 밖"];
                 }                    
                 else
+                {
                     monster.Attack(Data.player);
+                    if (Data.player.curHp < 0)
+                    {
+                        Data.player.PlayerDead();
+                        game.currentScene = game.sceneDic["마을"];
+                    }
+                }                   
             }
             else
             {
                 monster.Attack(Data.player);
-                if (Data.player.curHp < 0)
+                if (Data.player.curHp <= 0)
                 {
-                    Console.Clear();
-                    Console.WriteLine("당신은 더 이상 싸울 힘이 없습니다.");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("당신은 결국 쓰러져 버렸습니다.");
-                    Thread.Sleep(1000);
                     Data.player.PlayerDead();
                     game.currentScene = game.sceneDic["마을"];
                 }
                 else
+                {
                     Data.player.Attack(monster);
+                    if (monster.curHp < 0)
+                    {
+                        monster.MonsterDead();
+                        game.currentScene = game.sceneDic["마을 밖"];
+                    }
+                }                    
             }
         }
 

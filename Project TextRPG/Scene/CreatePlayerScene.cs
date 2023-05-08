@@ -105,6 +105,7 @@ namespace Project_TextRPG
                     game.currentScene = game.sceneDic["스토리"];
                     break;
                 case 2:
+                    Data.player = new Player();
                     game.currentScene = this;
                     Thread.Sleep(1000);
                     break;

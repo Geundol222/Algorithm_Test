@@ -14,25 +14,25 @@ namespace Project_TextRPG
         public override void Render()
         {
             StringBuilder sb = new StringBuilder();
-            StringBuilder shop = new StringBuilder();
+            StringBuilder inventory = new StringBuilder();
 
-            shop.AppendLine(@"       _                   ");
-            shop.AppendLine(@"     _|=|__________        ");
-            shop.AppendLine(@"    /              \       ");
-            shop.AppendLine(@"   /      SHOP      \      ");
-            shop.AppendLine(@"  /__________________\     ");
-            shop.AppendLine(@"   ||  || /--\ ||  ||      ");
-            shop.AppendLine(@"   ||[]|| | .| ||[]||      ");
-            shop.AppendLine(@" ()||__||_|__|_||__||()    ");
-            shop.AppendLine(@"( )|-|-|-|====|-|-|-|( )   ");
-            shop.AppendLine(@"^^^^^^^^^^====^^^^^^^^^^^  ");
+            inventory.AppendLine(@"       _                   ");
+            inventory.AppendLine(@"     _|=|__________        ");
+            inventory.AppendLine(@"    /              \       ");
+            inventory.AppendLine(@"   /      SHOP      \      ");
+            inventory.AppendLine(@"  /__________________\     ");
+            inventory.AppendLine(@"   ||  || /--\ ||  ||      ");
+            inventory.AppendLine(@"   ||[]|| | .| ||[]||      ");
+            inventory.AppendLine(@" ()||__||_|__|_||__||()    ");
+            inventory.AppendLine(@"( )|-|-|-|====|-|-|-|( )   ");
+            inventory.AppendLine(@"^^^^^^^^^^====^^^^^^^^^^^  ");
 
             sb.AppendLine("당신은 상점으로 들어갑니다.");
             sb.AppendLine();
             sb.AppendLine("상점주인 : 어서옵쇼~! 물건 보시려고? 좋은거 많아요!");
             sb.AppendLine();
 
-            Console.WriteLine(shop.ToString());
+            Console.WriteLine(inventory.ToString());
 
             char[] charArr = sb.ToString().ToCharArray();
 
@@ -124,7 +124,7 @@ namespace Project_TextRPG
         public void SellItem()
         {
             Console.CursorVisible = false;
-            Data.Market();
+            Data.InventoryMap();
             Data.inventory.itemIndex = 0;
             game.currentScene = game.sceneDic["판매"];
         }

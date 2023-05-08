@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class Item
+    public class Item : IUsable, IEquipable
     {
         public string image;
         public ItemType type;

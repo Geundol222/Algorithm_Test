@@ -2,7 +2,7 @@
 
 namespace Project_TextRPG
 {
-    public class SmallJewel : Item
+    public class SmallJewel : Stuff
     {
         public SmallJewel()
         {

@@ -9,6 +9,7 @@ namespace Project_TextRPG
     public static class Data
     {
         public static Player player;
+        public static List<Player> classList;
         public static List<Monster> monsters;
 
         public static Inventory inventory;
@@ -17,27 +18,30 @@ namespace Project_TextRPG
         public static bool[,] inventoryMap;
 
         public static bool[,] map;
+        public static bool enterOnce = false;
 
-        public static bool[,] marketChoice;
-        public static MarketChoice choice;
         public static List<Item> marketList;
 
         public static void Init()
         {
             player = new Player();
+            classList = new List<Player>();
             monsters = new List<Monster>();
 
             inventory = new Inventory();
             inven = new List<Item>();
             itemCount = new List<int>();
 
-            choice = new MarketChoice();
             marketList = new List<Item>();
 
             for (int i = 0; i < 25; i++)
             {
                 itemCount.Add(1);
             }
+
+            classList.Add(new Knight());
+            classList.Add(new Archor());
+            classList.Add(new Mage());
 
             inven.Add(new Potion());
 
@@ -114,31 +118,36 @@ namespace Project_TextRPG
 
             };
 
-            player.point = new Point(3, 3);
+            if (!enterOnce)
+            {
+                player.point = new Point(2, 3);
 
-            Slime slime1= new Slime();
-            slime1.point = new Point(16, 16);
-            monsters.Add(slime1);
+                Slime slime1 = new Slime();
+                slime1.point = new Point(16, 16);
+                monsters.Add(slime1);
 
-            Slime slime2 = new Slime();
-            slime2.point = new Point(9, 9);
-            monsters.Add(slime2);
+                Slime slime2 = new Slime();
+                slime2.point = new Point(9, 9);
+                monsters.Add(slime2);
 
-            Wolf wolf1 = new Wolf();
-            wolf1.point = new Point(8, 20);
-            monsters.Add(wolf1);
+                Wolf wolf1 = new Wolf();
+                wolf1.point = new Point(8, 20);
+                monsters.Add(wolf1);
 
-            Wolf wolf2 = new Wolf();
-            wolf2.point = new Point(7, 16);
-            monsters.Add(wolf2);
+                Wolf wolf2 = new Wolf();
+                wolf2.point = new Point(7, 16);
+                monsters.Add(wolf2);
 
-            Gorilla gorilla = new Gorilla();
-            gorilla.point = new Point(12, 19);
-            monsters.Add(gorilla);
+                Gorilla gorilla = new Gorilla();
+                gorilla.point = new Point(12, 19);
+                monsters.Add(gorilla);
 
-            Dragon dragon = new Dragon();
-            dragon.point = new Point(17, 23);
-            monsters.Add(dragon);
+                Dragon dragon = new Dragon();
+                dragon.point = new Point(17, 23);
+                monsters.Add(dragon);
+
+                enterOnce = true;
+            }
         }
 
         public static void AddItem()
@@ -182,16 +191,6 @@ namespace Project_TextRPG
                     }
                 }
             }
-        }
-
-        public static void Market()
-        {
-            marketChoice = new bool[25, 0];
-
-            for (int i = 0; i < marketChoice.GetLength(1); i++)
-                marketChoice[i, 0] = true;
-
-            choice.choicePoint = new Point(0, 0);
         }
 
         public static void Release()

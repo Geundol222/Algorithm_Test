@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class Potion : Item
+    public class Potion : Stuff
     {
-        private int point = 10;
-
         public Potion()
         {
+            point = 10;
             name = "포션";
             description = $"평범한 포션, 플레이어의 체력을 {point}회복시킨다.";
             price = 5;
