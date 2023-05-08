@@ -34,7 +34,7 @@ namespace Project_TextRPG
         public Player()
         {
             className = "초보자";
-            level = 10;
+            level = 1;
             exp = 0;
             maxHp = rand.Next(50, 100);
             maxMp = rand.Next(20, 50);

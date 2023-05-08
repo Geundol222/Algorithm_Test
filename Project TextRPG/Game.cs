@@ -49,7 +49,7 @@ namespace Project_TextRPG
             sceneDic.Add("전직", new ClassUpScene(this));
             battleScene = new BattleScene(this);
 
-            currentScene = sceneDic["메인 메뉴"];
+            currentScene = sceneDic["메인메뉴"];
         }
 
         public void EndGame()

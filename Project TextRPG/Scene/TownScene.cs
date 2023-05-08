@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +31,11 @@ namespace Project_TextRPG
             sb.AppendLine("당신은 마을에 있습니다. 행동을 선택해 주세요");
             sb.AppendLine();
             sb.AppendLine("============================================");
+            if (Data.player.PlayerClassUp())
+            {
+                sb.AppendLine();
+                sb.AppendLine("0. 진급을 하러 간다.");
+            }
             sb.AppendLine("1. 상점가로 간다.");
             sb.AppendLine();
             sb.AppendLine("2. 마을을 돌아본다.(랜덤 이벤트)");
@@ -41,11 +47,8 @@ namespace Project_TextRPG
             sb.AppendLine("5. 인벤토리를 확인한다.");
             sb.AppendLine();
             sb.AppendLine("6. 스탯을 확인한다.");
-            if (Data.player.PlayerClassUp())
-            {
-                sb.AppendLine();
-                sb.AppendLine("7. 진급을 하러 간다.");
-            }
+            sb.AppendLine();
+            sb.AppendLine("7. 게임 종료");
             sb.AppendLine("============================================");
 
             Console.WriteLine(sb.ToString());
@@ -57,6 +60,17 @@ namespace Project_TextRPG
 
             int command;
             if (!int.TryParse(input, out command))
+            {
+                Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
+                Thread.Sleep(1000);
+                return;
+            }
+
+            if (command == 0 && Data.player.level >= 10)
+            {
+                game.currentScene = game.sceneDic["전직"];
+            }                
+            else if (command < 1 || command > 7)
             {
                 Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
                 Thread.Sleep(1000);
@@ -85,11 +99,13 @@ namespace Project_TextRPG
                     break;
                 case 6:
                     PlayerStat();
-                    break;                    
+                    break;
+                case 7:
+                    game.EndGame();
+                    break;
             }
 
-            if (command == 7)
-                game.currentScene = game.sceneDic["전직"];
+            
         }
 
         private void PlayerStat()
