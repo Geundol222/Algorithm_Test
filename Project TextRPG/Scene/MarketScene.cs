@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,30 +10,34 @@ namespace Project_TextRPG
 {
     public class MarketScene : Scene
     {
+
+        string shopImage;
         public MarketScene(Game game) : base(game) { }
 
         public override void Render()
         {
             StringBuilder sb = new StringBuilder();
-            StringBuilder inventory = new StringBuilder();
 
-            inventory.AppendLine(@"       _                   ");
-            inventory.AppendLine(@"     _|=|__________        ");
-            inventory.AppendLine(@"    /              \       ");
-            inventory.AppendLine(@"   /      SHOP      \      ");
-            inventory.AppendLine(@"  /__________________\     ");
-            inventory.AppendLine(@"   ||  || /--\ ||  ||      ");
-            inventory.AppendLine(@"   ||[]|| | .| ||[]||      ");
-            inventory.AppendLine(@" ()||__||_|__|_||__||()    ");
-            inventory.AppendLine(@"( )|-|-|-|====|-|-|-|( )   ");
-            inventory.AppendLine(@"^^^^^^^^^^====^^^^^^^^^^^  ");
+            sb.AppendLine(@"       _                   ");
+            sb.AppendLine(@"     _|=|__________        ");
+            sb.AppendLine(@"    /              \       ");
+            sb.AppendLine(@"   /      SHOP      \      ");
+            sb.AppendLine(@"  /__________________\     ");
+            sb.AppendLine(@"   ||  || /--\ ||  ||      ");
+            sb.AppendLine(@"   ||[]|| | .| ||[]||      ");
+            sb.AppendLine(@" ()||__||_|__|_||__||()    ");
+            sb.AppendLine(@"( )|-|-|-|====|-|-|-|( )   ");
+            sb.AppendLine(@"^^^^^^^^^^====^^^^^^^^^^^  ");
+
+            shopImage = sb.ToString();
+            sb.Clear();
 
             sb.AppendLine("당신은 상점으로 들어갑니다.");
             sb.AppendLine();
             sb.AppendLine("상점주인 : 어서옵쇼~! 물건 보시려고? 좋은거 많아요!");
             sb.AppendLine();
 
-            Console.WriteLine(inventory.ToString());
+            Console.WriteLine(shopImage);
 
             char[] charArr = sb.ToString().ToCharArray();
 
@@ -90,6 +95,7 @@ namespace Project_TextRPG
                     sb.AppendLine();
                     sb.AppendLine("상점주인 : 예~ 감사합니다. 다음에 또 오세요~");
                     sb.AppendLine();
+                    sb.AppendLine("당신은 마을로 돌아갑니다.");                    
                     break;
             }
 
@@ -106,11 +112,15 @@ namespace Project_TextRPG
                 Thread.Sleep(500);
                 BuyItem();
             }
-
-            if (command == 2)
+            else if (command == 2)
             {
                 Thread.Sleep(500);
                 SellItem();
+            }
+            else
+            {
+                Thread.Sleep(1000);
+                game.currentScene = game.sceneDic["마을"];
             }
                 
         }

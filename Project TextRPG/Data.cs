@@ -118,7 +118,7 @@ namespace Project_TextRPG
 
             };
 
-            if (!enterOnce)
+            if (!enterOnce || monsters.Count < 1)
             {
                 player.point = new Point(2, 3);
 
@@ -168,13 +168,29 @@ namespace Project_TextRPG
             }
             else if (percent < 60)
             {
-                inven.Add(new LargePotion());
-                Console.WriteLine("큰 포션을 얻었습니다.");
+                if (percent > 30 && percent < 45)
+                {
+                    inven.Add(new LargePotion());
+                    Console.WriteLine("큰 포션을 얻었습니다.");
+                }
+                else
+                {
+                    inven.Add(new LargeManaPotion());
+                    Console.WriteLine("큰 마나포션을 얻었습니다.");
+                }                
             }
             else
             {
-                inven.Add(new Potion());
-                Console.WriteLine("작은 포션을 얻었습니다.");
+                if (percent > 60 && percent < 80)
+                {
+                    inven.Add(new Potion());
+                    Console.WriteLine("포션을 얻었습니다.");
+                }
+                else
+                {
+                    inven.Add(new ManaPotion());
+                    Console.WriteLine("마나포션을 얻었습니다.");
+                }
             }
         }
 

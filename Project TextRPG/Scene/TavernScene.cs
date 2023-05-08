@@ -8,35 +8,39 @@ namespace Project_TextRPG
 {
     public class TavernScene : Scene
     {
+        string tavernImage;
+
         public TavernScene(Game game) : base(game) { }
 
         public override void Render()
         {
             StringBuilder sb = new StringBuilder();
-            StringBuilder tavern = new StringBuilder();
 
             Console.Clear();
 
-            tavern.AppendLine(@"        (                            ");
-            tavern.AppendLine(@"                                     ");
-            tavern.AppendLine(@"           )                         ");
-            tavern.AppendLine(@"         ( _   _._                   ");
-            tavern.AppendLine(@"          |_|-'_~_`-._               ");
-            tavern.AppendLine(@"      _.-'-_~_-~_-~-_`-._            ");
-            tavern.AppendLine(@"  _.-'_~-_~-_-~-_~_~-_~-_`-._        ");
-            tavern.AppendLine(@" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       ");
-            tavern.AppendLine(@"   |  []  []   []   []  [] |         ");
-            tavern.AppendLine(@"   |           __    ___   |         ");
-            tavern.AppendLine(@" ._|  []  []  | .|  [___]  |         ");
-            tavern.AppendLine(@" |=|________()|__|()_______|         ");
-            tavern.AppendLine(@"^^^^^^^^^^^^^^^ === ^^^^^^^^^^^^^^^^^");
+            sb.AppendLine(@"        (                            ");
+            sb.AppendLine(@"                                     ");
+            sb.AppendLine(@"           )                         ");
+            sb.AppendLine(@"         ( _   _._                   ");
+            sb.AppendLine(@"          |_|-'_~_`-._               ");
+            sb.AppendLine(@"      _.-'-_~_-~_-~-_`-._            ");
+            sb.AppendLine(@"  _.-'_~-_~-_-~-_~_~-_~-_`-._        ");
+            sb.AppendLine(@" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       ");
+            sb.AppendLine(@"   |  []  []   []   []  [] |         ");
+            sb.AppendLine(@"   |           __    ___   |         ");
+            sb.AppendLine(@" ._|  []  []  | .|  [___]  |         ");
+            sb.AppendLine(@" |=|________()|__|()_______|         ");
+            sb.AppendLine(@"^^^^^^^^^^^^^^^ === ^^^^^^^^^^^^^^^^^");
+
+            tavernImage = sb.ToString();
+            sb.Clear();
 
             sb.AppendLine("당신은 여관으로 들어갑니다.");
             sb.AppendLine();
             sb.AppendLine("여관주인 : 어서오세요! 쉬시려구요? 하룻밤에 50골드 입니다");
             sb.AppendLine();
 
-            Console.WriteLine(tavern.ToString());
+            Console.WriteLine(tavernImage);
 
             char[] charArr = sb.ToString().ToCharArray();
 
