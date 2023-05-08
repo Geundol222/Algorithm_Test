@@ -40,7 +40,7 @@ namespace Project_TextRPG
             }
 
             classList.Add(new Knight());
-            classList.Add(new Archor());
+            classList.Add(new Archer());
             classList.Add(new Mage());
 
             inven.Add(new Potion());
