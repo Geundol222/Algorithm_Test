@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +50,8 @@ namespace Project_TextRPG
             sb.AppendLine("6. 스탯을 확인한다.");
             sb.AppendLine();
             sb.AppendLine("7. 게임 종료");
+            sb.AppendLine();
+            sb.AppendLine("T. 전직 테스트 모드");
             sb.AppendLine("============================================");
 
             Console.WriteLine(sb.ToString());
@@ -61,24 +64,42 @@ namespace Project_TextRPG
             int command;
             if (!int.TryParse(input, out command))
             {
-                Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
-                Thread.Sleep(1000);
-                return;
+                if (input != "t" && input != "T")
+                {
+                    Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
+                    Thread.Sleep(1000);
+                    return;
+                }
+                else if (input == "t" || input == "T")
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("전직 테스트 모드로 진입합니다.");
+                    Console.WriteLine();
+                    Thread.Sleep(1000);
+                    Console.WriteLine("해당 모드에서는 전직을 체험해 볼 수 있지만, 실제로 전직이 진행되지는 않습니다.");
+                    Thread.Sleep(1000);
+                    Data.isTest = true;
+                    game.currentScene = game.sceneDic["전직"];
+                }
             }
 
-            if (command == 0 && Data.player.level >= 10)
+            if (command < 1 || command > 7)
             {
-                game.currentScene = game.sceneDic["전직"];
-            }                
-            else if (command < 1 || command > 7)
-            {
-                Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
-                Thread.Sleep(1000);
-                return;
+                if (input != "t" && input != "T")
+                {
+                    Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
+                    Thread.Sleep(1000);
+                    return;
+                }
             }
 
             switch (command)
             {
+                case 0:
+                    if (Data.player.level >= 10)
+                        game.currentScene = game.sceneDic["전직"];
+                    break;
                 case 1:
                     game.currentScene = game.sceneDic["상점"];
                     break;
@@ -129,7 +150,7 @@ namespace Project_TextRPG
                             game.EndGame();
                             break;
                         case 2:
-                            break;
+                            return;
                     }                    
                     break;
             }
