@@ -77,7 +77,7 @@ namespace Project_TextRPG
                     if (Data.map[y, x])
                         sb.Append(' ');
                     else
-                        sb.Append('■');
+                        sb.Append('█');
                 }
                 sb.AppendLine();
             }
