@@ -101,7 +101,36 @@ namespace Project_TextRPG
                     PlayerStat();
                     break;
                 case 7:
-                    game.EndGame();
+                    Console.Clear();
+                    Console.WriteLine("정말 종료하시겠습니까?");
+                    Console.WriteLine("1. 예");
+                    Console.WriteLine("2. 아니오");
+
+                    string end = Console.ReadLine();
+
+                    int endNum;
+                    if (!int.TryParse(end, out endNum))
+                    {
+                        Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
+                        Thread.Sleep(1000);
+                        return;
+                    }
+
+                    if (endNum < 1 ||  endNum > 2)
+                    {
+                        Console.WriteLine("잘못 입력하셨습니다. 다시 입력해주세요");
+                        Thread.Sleep(1000);
+                        return;
+                    }
+
+                    switch (endNum)
+                    {
+                        case 1:
+                            game.EndGame();
+                            break;
+                        case 2:
+                            break;
+                    }                    
                     break;
             }
 

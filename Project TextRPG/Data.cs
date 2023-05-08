@@ -40,7 +40,7 @@ namespace Project_TextRPG
             }
 
             classList.Add(new Knight());
-            classList.Add(new Archor());
+            classList.Add(new Archer());
             classList.Add(new Mage());
 
             inven.Add(new Potion());
@@ -211,7 +211,8 @@ namespace Project_TextRPG
 
         public static void Release()
         {
-
+            Console.WriteLine("게임을 종료합니다.");
+            Thread.Sleep(1000);
         }
     }
 }

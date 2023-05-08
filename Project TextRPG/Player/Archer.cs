@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Project_TextRPG
 {
-    public class Archor : Player
+    public class Archer : Player
     {
-        public Archor()
+        public Archer()
         {
             className = "궁수";
             level = Data.player.level;
