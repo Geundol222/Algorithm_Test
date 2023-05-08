@@ -211,7 +211,8 @@ namespace Project_TextRPG
 
         public static void Release()
         {
-
+            Console.WriteLine("게임을 종료합니다.");
+            Thread.Sleep(1000);
         }
     }
 }
