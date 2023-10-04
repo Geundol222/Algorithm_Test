@@ -19,7 +19,7 @@
 
             dic[3] = 5;
 
-            Console.WriteLine(dic[3]);
+            Console.WriteLine(dic[3]); // result = 5
         }
     }
 }
